@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 570" width="1010" height="570" font-family='Helvetica, Arial, sans-serif'>
+  <rect width="1010" height="570" fill="#F7F1E8"/>
+  <text x="28" y="34" font-size="15" font-weight="bold" fill="#5C2233">Screen 4 — Adjust and reason capture</text>
+  <text x="28" y="54" font-size="11.5" fill="#6E5B62">The override path. Where the human-in-the-loop control actually lives.</text>
+  <rect x="28" y="70" width="700" height="470" rx="6" fill="#FFFFFF" stroke="#C9BDB4"/>
+  <line x1="28" y1="112" x2="728" y2="112" stroke="#C9BDB4"/>
+  <text x="46" y="97" font-size="13" font-weight="bold" fill="#6E5B62">← Kids' rash vest, 5 colours</text>
+
+  <!-- dimmed background content -->
+  <rect x="46" y="130" width="400" height="72" rx="6" fill="#5C2233" opacity="0.18"/>
+  <rect x="462" y="130" width="248" height="72" rx="6" fill="#F7F1E8" stroke="#C9BDB4" opacity="0.5"/>
+  <rect x="46" y="218" width="664" height="60" rx="6" fill="#F7F1E8" stroke="#C9BDB4" opacity="0.5"/>
+
+  <!-- modal -->
+  <rect x="120" y="160" width="516" height="352" rx="8" fill="#FFFFFF" stroke="#5C2233" stroke-width="1.5"/>
+  <text x="146" y="192" font-size="15" font-weight="bold" fill="#5C2233">Adjust this recommendation</text>
+  <text x="146" y="212" font-size="10.5" fill="#6E5B62">ClearSight recommended: Cut 25% — this week</text>
+
+  <line x1="120" y1="228" x2="636" y2="228" stroke="#C9BDB4"/>
+
+  <text x="146" y="254" font-size="11" font-weight="bold" fill="#2E2126">Your decision</text>
+  <rect x="146" y="266" width="150" height="36" rx="5" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="158" y="289" font-size="11" fill="#2E2126">Depth: 15%  ▾</text>
+  <rect x="310" y="266" width="180" height="36" rx="5" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="322" y="289" font-size="11" fill="#2E2126">Timing: in 2 weeks  ▾</text>
+
+  <rect x="146" y="314" width="344" height="34" rx="5" fill="#FBF6EC" stroke="#B07D2A"/>
+  <text x="158" y="335" font-size="10" fill="#B07D2A">Projected sell-through with your change: 71% (vs 82%)</text>
+
+  <text x="146" y="378" font-size="11" font-weight="bold" fill="#2E2126">Reason  <tspan fill="#C4462F">*required</tspan></text>
+  <rect x="146" y="390" width="108" height="26" rx="13" fill="#F7F1E8" stroke="#C9BDB4" stroke-width="1"/>
+  <text x="200" y="407" font-size="8.5" fill="#6E5B62" text-anchor="middle">Competitor activity</text>
+  <rect x="264" y="390" width="108" height="26" rx="13" fill="#EDE0D4" stroke="#5C2233" stroke-width="1.5"/>
+  <text x="318" y="407" font-size="8.5" fill="#5C2233" text-anchor="middle">Range repeating</text>
+  <rect x="382" y="390" width="108" height="26" rx="13" fill="#F7F1E8" stroke="#C9BDB4" stroke-width="1"/>
+  <text x="436" y="407" font-size="8.5" fill="#6E5B62" text-anchor="middle">Store feedback</text>
+  <rect x="146" y="422" width="108" height="26" rx="13" fill="#F7F1E8" stroke="#C9BDB4" stroke-width="1"/>
+  <text x="200" y="439" font-size="8.5" fill="#6E5B62" text-anchor="middle">Stock quality issue</text>
+  <rect x="264" y="422" width="108" height="26" rx="13" fill="#F7F1E8" stroke="#C9BDB4" stroke-width="1"/>
+  <text x="318" y="439" font-size="8.5" fill="#6E5B62" text-anchor="middle">Trading direction</text>
+  <rect x="382" y="422" width="108" height="26" rx="13" fill="#F7F1E8" stroke="#C9BDB4" stroke-width="1"/>
+  <text x="436" y="439" font-size="8.5" fill="#6E5B62" text-anchor="middle">Other</text>
+  <rect x="146" y="456" width="344" height="30" rx="5" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="158" y="475" font-size="9.5" fill="#6E5B62">Add detail (optional)…</text>
+
+  <rect x="504" y="456" width="112" height="30" rx="5" fill="#5C2233"/>
+  <text x="560" y="475" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Save decision</text>
+  <line x1="734" y1="196" x2="744" y2="196" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="200" font-size="10" fill="#C4462F">The override is a first-class</text>
+  <text x="748" y="213" font-size="10" fill="#C4462F">action with its own screen —</text>
+  <text x="748" y="226" font-size="10" fill="#C4462F">not a small link tucked</text>
+  <text x="748" y="239" font-size="10" fill="#C4462F">beside Approve</text>
+  <line x1="734" y1="326" x2="744" y2="326" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="330" font-size="10" fill="#C4462F">The system shows the cost</text>
+  <text x="748" y="343" font-size="10" fill="#C4462F">of the planner's change</text>
+  <text x="748" y="356" font-size="10" fill="#C4462F">without arguing. Informing,</text>
+  <text x="748" y="369" font-size="10" fill="#C4462F">not resisting</text>
+  <line x1="734" y1="396" x2="744" y2="396" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="400" font-size="10" fill="#C4462F">Fixed reason codes make</text>
+  <text x="748" y="413" font-size="10" fill="#C4462F">overrides analysable in</text>
+  <text x="748" y="426" font-size="10" fill="#C4462F">aggregate. Free text alone</text>
+  <text x="748" y="439" font-size="10" fill="#C4462F">cannot be clustered</text>
+
+</svg>

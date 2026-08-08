@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 520" width="1010" height="520" font-family='Helvetica, Arial, sans-serif'>
+  <rect width="1010" height="520" fill="#F7F1E8"/>
+  <text x="28" y="34" font-size="15" font-weight="bold" fill="#5C2233">Screen 3 — Low confidence</text>
+  <text x="28" y="54" font-size="11.5" fill="#6E5B62">What the product does when it does not know. The most important screen for trust.</text>
+  <rect x="28" y="70" width="700" height="420" rx="6" fill="#FFFFFF" stroke="#C9BDB4"/>
+  <line x1="28" y1="112" x2="728" y2="112" stroke="#C9BDB4"/>
+  <text x="46" y="97" font-size="13" font-weight="bold" fill="#2E2126">← Cooler bag 24L</text>
+  <text x="600" y="97" font-size="10" fill="#6E5B62">1,100 units · $97k at stake</text>
+
+  <rect x="46" y="130" width="664" height="112" rx="6" fill="#FBF0EC" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="66" y="158" font-size="10" fill="#C4462F" letter-spacing="1.4">NO RECOMMENDATION</text>
+  <text x="66" y="188" font-size="22" font-weight="bold" fill="#5C2233">Routed to manual decision</text>
+  <text x="66" y="214" font-size="11.5" fill="#2E2126">ClearSight does not have enough signal to recommend a markdown for this item.</text>
+  <text x="66" y="231" font-size="11.5" fill="#2E2126">The decision stays with you.</text>
+
+  <rect x="46" y="262" width="400" height="146" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="66" y="286" font-size="11" font-weight="bold" fill="#5C2233">Why confidence is low</text>
+  <text x="66" y="310" font-size="10.5" fill="#2E2126">• New line — no prior-season history for this item</text>
+  <text x="66" y="330" font-size="10.5" fill="#2E2126">• Only 2 analogue lines matched, both weakly</text>
+  <text x="66" y="350" font-size="10.5" fill="#2E2126">• Cluster demand signals conflict: 6 up, 5 down</text>
+  <text x="66" y="378" font-size="10" fill="#6E5B62">Confidence would improve with 3+ more weeks of</text>
+  <text x="66" y="392" font-size="10" fill="#6E5B62">in-season sales, or a stronger attribute match.</text>
+
+  <rect x="462" y="262" width="248" height="146" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="480" y="286" font-size="11" font-weight="bold" fill="#5C2233">What you can still see</text>
+  <text x="480" y="310" font-size="10.5" fill="#2E2126">• Sell-through to date by cluster</text>
+  <text x="480" y="330" font-size="10.5" fill="#2E2126">• Stock on hand and cover weeks</text>
+  <text x="480" y="350" font-size="10.5" fill="#2E2126">• Comparable lines and how they cleared</text>
+  <text x="480" y="376" font-size="10" fill="#6E5B62">Data without a recommendation</text>
+  <text x="480" y="390" font-size="10" fill="#6E5B62">attached to it.</text>
+
+  <line x1="28" y1="428" x2="728" y2="428" stroke="#C9BDB4"/>
+  <rect x="46" y="444" width="180" height="34" rx="5" fill="#5C2233"/>
+  <text x="136" y="466" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Record my decision</text>
+  <text x="242" y="466" font-size="10" fill="#6E5B62">Logged as a manual decision — outcome still tracked for evaluation</text>
+  <line x1="734" y1="176" x2="744" y2="176" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="180" font-size="10" fill="#C4462F">The system says nothing</text>
+  <text x="748" y="193" font-size="10" fill="#C4462F">rather than guessing.</text>
+  <text x="748" y="206" font-size="10" fill="#C4462F">Abstention is a designed</text>
+  <text x="748" y="219" font-size="10" fill="#C4462F">behaviour, not a gap</text>
+  <line x1="734" y1="296" x2="744" y2="296" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="300" font-size="10" fill="#C4462F">Naming the cause of low</text>
+  <text x="748" y="313" font-size="10" fill="#C4462F">confidence teaches the</text>
+  <text x="748" y="326" font-size="10" fill="#C4462F">planner when to trust it</text>
+  <text x="748" y="339" font-size="10" fill="#C4462F">elsewhere</text>
+  <line x1="734" y1="376" x2="744" y2="376" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="380" font-size="10" fill="#C4462F">Evidence is still shown.</text>
+  <text x="748" y="393" font-size="10" fill="#C4462F">Withholding a number is</text>
+  <text x="748" y="406" font-size="10" fill="#C4462F">not the same as</text>
+  <text x="748" y="419" font-size="10" fill="#C4462F">withholding help</text>
+
+</svg>

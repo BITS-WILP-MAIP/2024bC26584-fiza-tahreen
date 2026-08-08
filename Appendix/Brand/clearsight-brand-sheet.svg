@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" width="900" height="660" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="900" height="660" fill="#F7F1E8"/>
+  <text x="60" y="60" font-size="30" font-weight="bold" fill="#5C2233">ClearSight — brand sheet</text>
+  <text x="60" y="84" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#6E5B62">The ring is the planner's view. The three descending bars are the markdown steps — the deepest cut in accent red.</text>
+
+  <text x="60" y="140" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#C4462F" letter-spacing="2">PRIMARY MARK</text>
+  <g transform="translate(60,160)">  <circle cx="60" cy="60" r="52" fill="none" stroke="#5C2233" stroke-width="9"/>
+  <rect x="30" y="42" width="60" height="9" rx="4.5" fill="#5C2233"/>
+  <rect x="30" y="60" width="43" height="9" rx="4.5" fill="#7D3348"/>
+  <rect x="30" y="78" width="26" height="9" rx="4.5" fill="#C4462F"/></g>
+
+  <text x="240" y="140" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#C4462F" letter-spacing="2">REVERSED</text>
+  <rect x="236" y="154" width="132" height="132" rx="12" fill="#5C2233"/>
+  <g transform="translate(242,160)">  <circle cx="60" cy="60" r="52" fill="none" stroke="#F7F1E8" stroke-width="9"/>
+  <rect x="30" y="42" width="60" height="9" rx="4.5" fill="#F7F1E8"/>
+  <rect x="30" y="60" width="43" height="9" rx="4.5" fill="#E8D5DB"/>
+  <rect x="30" y="78" width="26" height="9" rx="4.5" fill="#C4462F"/></g>
+
+  <text x="420" y="140" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#C4462F" letter-spacing="2">APP ICON</text>
+  <g transform="translate(420,160) scale(1.9)">
+    <rect width="64" height="64" rx="14" fill="#5C2233"/>
+    <circle cx="32" cy="32" r="20" fill="none" stroke="#F7F1E8" stroke-width="4.5"/>
+    <rect x="20" y="25" width="24" height="4.5" rx="2.25" fill="#F7F1E8"/>
+    <rect x="20" y="33" width="17" height="4.5" rx="2.25" fill="#E8D5DB"/>
+    <rect x="20" y="41" width="10" height="4.5" rx="2.25" fill="#C4462F"/>
+  </g>
+
+  <text x="620" y="140" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#C4462F" letter-spacing="2">SMALL SIZES</text>
+  <g transform="translate(624,168) scale(0.33)">  <circle cx="60" cy="60" r="52" fill="none" stroke="#5C2233" stroke-width="9"/>
+  <rect x="30" y="42" width="60" height="9" rx="4.5" fill="#5C2233"/>
+  <rect x="30" y="60" width="43" height="9" rx="4.5" fill="#7D3348"/>
+  <rect x="30" y="78" width="26" height="9" rx="4.5" fill="#C4462F"/></g>
+  <g transform="translate(672,172) scale(0.22)">  <circle cx="60" cy="60" r="52" fill="none" stroke="#5C2233" stroke-width="9"/>
+  <rect x="30" y="42" width="60" height="9" rx="4.5" fill="#5C2233"/>
+  <rect x="30" y="60" width="43" height="9" rx="4.5" fill="#7D3348"/>
+  <rect x="30" y="78" width="26" height="9" rx="4.5" fill="#C4462F"/></g>
+  <g transform="translate(706,175) scale(0.15)">  <circle cx="60" cy="60" r="52" fill="none" stroke="#5C2233" stroke-width="9"/>
+  <rect x="30" y="42" width="60" height="9" rx="4.5" fill="#5C2233"/>
+  <rect x="30" y="60" width="43" height="9" rx="4.5" fill="#7D3348"/>
+  <rect x="30" y="78" width="26" height="9" rx="4.5" fill="#C4462F"/></g>
+  <text x="620" y="248" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#6E5B62">40px · 26px · 18px</text>
+
+  <text x="60" y="330" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#C4462F" letter-spacing="2">HORIZONTAL LOCKUP</text>
+  <g transform="translate(56,344)">
+    <g transform="translate(16,12) scale(0.71)">  <circle cx="60" cy="60" r="52" fill="none" stroke="#5C2233" stroke-width="9"/>
+  <rect x="30" y="42" width="60" height="9" rx="4.5" fill="#5C2233"/>
+  <rect x="30" y="60" width="43" height="9" rx="4.5" fill="#7D3348"/>
+  <rect x="30" y="78" width="26" height="9" rx="4.5" fill="#C4462F"/></g>
+    <text x="122" y="58" font-size="40" fill="#5C2233"><tspan font-weight="bold">Clear</tspan><tspan fill="#C4462F">Sight</tspan></text>
+    <text x="124" y="80" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#6E5B62" letter-spacing="2.2">MARKDOWN DECISION COPILOT</text>
+  </g>
+
+  <rect x="500" y="344" width="340" height="100" rx="10" fill="#5C2233"/>
+  <g transform="translate(508,346)">
+    <g transform="translate(16,12) scale(0.71)">  <circle cx="60" cy="60" r="52" fill="none" stroke="#F7F1E8" stroke-width="9"/>
+  <rect x="30" y="42" width="60" height="9" rx="4.5" fill="#F7F1E8"/>
+  <rect x="30" y="60" width="43" height="9" rx="4.5" fill="#E8D5DB"/>
+  <rect x="30" y="78" width="26" height="9" rx="4.5" fill="#C4462F"/></g>
+    <text x="122" y="58" font-size="40" fill="#F7F1E8"><tspan font-weight="bold">Clear</tspan><tspan fill="#F0B8A8">Sight</tspan></text>
+    <text x="124" y="80" font-family="Helvetica, Arial, sans-serif" font-size="11.5" fill="#C9A5B2" letter-spacing="2.2">MARKDOWN DECISION COPILOT</text>
+  </g>
+
+  <text x="60" y="474" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#C4462F" letter-spacing="2">PALETTE</text>
+  <rect x="60" y="492" width="120" height="70" rx="8" fill="#5C2233"/>
+  <text x="60" y="584" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#5C2233">Berry</text>
+  <text x="60" y="600" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#6E5B62">#5C2233  ·  Primary</text>
+  <rect x="220" y="492" width="120" height="70" rx="8" fill="#7D3348"/>
+  <text x="220" y="584" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#5C2233">Wine</text>
+  <text x="220" y="600" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#6E5B62">#7D3348  ·  Secondary</text>
+  <rect x="380" y="492" width="120" height="70" rx="8" fill="#C4462F"/>
+  <text x="380" y="584" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#5C2233">Markdown Red</text>
+  <text x="380" y="600" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#6E5B62">#C4462F  ·  Accent</text>
+  <rect x="540" y="492" width="120" height="70" rx="8" fill="#F7F1E8" stroke="#D9CCC0" stroke-width="1"/>
+  <text x="540" y="584" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#5C2233">Cream</text>
+  <text x="540" y="600" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#6E5B62">#F7F1E8  ·  Background</text>
+  <rect x="700" y="492" width="120" height="70" rx="8" fill="#6E5B62"/>
+  <text x="700" y="584" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" fill="#5C2233">Muted</text>
+  <text x="700" y="600" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#6E5B62">#6E5B62  ·  Body text</text>
+
+  <text x="60" y="632" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#6E5B62">Clear space around the mark = the ring's stroke width. Minimum mark size 18px. Do not recolour the accent bar or reorder the steps.</text>
+</svg>
