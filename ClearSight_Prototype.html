@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClearSight — Prototype</title>
+<style>
+  :root{
+    --bg:#F7F1E8; --card:#FFFFFF; --line:#C9BDB4; --line-soft:#E7DDD1;
+    --maroon:#5C2233; --maroon2:#7D3348; --accent:#C4462F;
+    --ink:#2E2126; --muted:#6E5B62;
+    --green:#3F7A5E; --green-t:#EAF2ED;
+    --amber:#B07D2A; --amber-t:#F6EEDD;
+    --accent-t:#FBEEEA; --maroon-t:#F3E9EC;
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    --radius:10px; --shadow:0 1px 2px rgba(46,33,38,.05),0 8px 24px rgba(46,33,38,.05);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  button{font-family:inherit;cursor:pointer}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+  .eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .tnum{font-variant-numeric:tabular-nums}
+
+  /* ---------- top bar ---------- */
+  header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:20px;padding:12px 24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand svg{display:block}
+  .wordmark{font-family:var(--serif);font-size:22px;color:var(--maroon);font-weight:700;letter-spacing:.2px}
+  .wordmark span{color:var(--accent);font-weight:700}
+  .ctx{color:var(--muted);font-size:12.5px;border-left:1px solid var(--line);padding-left:20px}
+  .ctx b{color:var(--ink);font-weight:600}
+  .top-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .ghost{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 12px;font-size:12.5px;display:inline-flex;align-items:center;gap:8px}
+  .ghost:hover{background:var(--bg)}
+  .badge-count{background:var(--maroon);color:#fff;border-radius:20px;font-size:11px;font-weight:700;padding:1px 7px;min-width:18px;text-align:center}
+
+  main{max-width:1080px;margin:0 auto;padding:26px 24px 60px}
+  .fade{animation:fade .28s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  /* ---------- worklist ---------- */
+  .page-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+  .page-head h1{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--maroon);margin:0}
+  .filter{font-size:12px;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px}
+
+  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:8px;box-shadow:var(--shadow)}
+  .summary .cell{padding:16px 18px;border-right:1px solid var(--line-soft)}
+  .summary .cell:last-child{border-right:0}
+  .summary .num{font-size:26px;font-weight:700;line-height:1;color:var(--maroon)}
+  .summary .num.warn{color:var(--amber)} .summary .num.ok{color:var(--green)}
+  .summary .lbl{font-size:11px;color:var(--muted);margin-top:6px}
+
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  thead th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line)}
+  thead th.r{text-align:right}
+  tbody tr{border-bottom:1px solid var(--line-soft);cursor:pointer;transition:background .12s}
+  tbody tr:last-child{border-bottom:0}
+  tbody tr:hover{background:#FBF7F0}
+  tbody tr:focus-visible{background:#FBF7F0}
+  td{padding:13px 16px;vertical-align:middle}
+  td.r{text-align:right}
+  .item-name{font-weight:600;color:var(--ink)}
+  .item-sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .stake{font-weight:700;color:var(--maroon)}
+  .rec-text{color:var(--ink);font-size:13px}
+  .rec-none{color:var(--muted);font-style:italic}
+  tr.decided{opacity:.55}
+  tr.decided:hover{opacity:.8}
+
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;border-radius:20px;padding:3px 10px;white-space:nowrap}
+  .pill.high{color:var(--green);background:var(--green-t)}
+  .pill.medium{color:var(--amber);background:var(--amber-t)}
+  .pill.none{color:var(--maroon2);background:var(--maroon-t)}
+  .dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+  .status{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:6px;border:1px solid var(--line)}
+  .status.approved{color:var(--green);border-color:var(--green)}
+  .status.adjusted{color:var(--amber);border-color:var(--amber)}
+  .status.rejected{color:var(--accent);border-color:var(--accent)}
+  .status.manual{color:var(--maroon2);border-color:var(--maroon2)}
+
+  /* ---------- detail ---------- */
+  .back{background:none;border:0;color:var(--muted);font-size:13px;padding:4px 0;display:inline-flex;align-items:center;gap:8px;margin-bottom:14px}
+  .back:hover{color:var(--ink)}
+  .detail-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .detail-head h1{font-family:var(--serif);font-size:24px;color:var(--maroon);margin:0;font-weight:700}
+  .detail-head .meta{color:var(--muted);font-size:13px}
+  .grid{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;align-items:start}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+  .card + .card{margin-top:18px}
+
+  .rec-hero .eyebrow{margin-bottom:8px}
+  .rec-action{font-family:var(--serif);font-size:28px;color:var(--ink);font-weight:700;line-height:1.1;margin:2px 0 10px}
+  .rec-proj{font-size:14px;color:var(--ink)}
+  .rec-proj b{color:var(--maroon)}
+  .rec-proj .flat{color:var(--muted)}
+  .conf-row{display:flex;align-items:center;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft)}
+  .conf-evidence{font-size:12px;color:var(--muted)}
+
+  .why h3,.opts h3,.cl h3,.evi h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-weight:700}
+  ul.why-list{list-style:none;margin:0;padding:0}
+  ul.why-list li{position:relative;padding:6px 0 6px 20px;font-size:13px;color:var(--ink);border-bottom:1px solid var(--line-soft)}
+  ul.why-list li:last-child{border-bottom:0}
+  ul.why-list li::before{content:"";position:absolute;left:2px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.75}
+  .driver{margin-top:12px;font-size:12px;color:var(--muted)}
+  .driver b{color:var(--maroon2)}
+
+  /* cluster breakdown */
+  .cl-row{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line-soft)}
+  .cl-row:last-child{border-bottom:0}
+  .cl-name{font-size:12.5px}
+  .cl-name .st-stores{color:var(--muted);font-size:11px;margin-left:6px}
+  .cl-bar{grid-column:1 / -1;height:6px;background:var(--bg);border-radius:4px;position:relative;overflow:hidden}
+  .cl-bar > i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--maroon2)}
+  .cl-bar > .plan{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.45}
+  .cl-val{font-size:12px;font-weight:700;color:var(--ink);text-align:right}
+  .cl-val.below{color:var(--accent)}
+  .cl-legend{font-size:11px;color:var(--muted);margin-top:10px;display:flex;gap:16px;flex-wrap:wrap}
+  .cl-legend span{display:inline-flex;align-items:center;gap:6px}
+  .swatch{width:10px;height:6px;border-radius:2px;display:inline-block;background:var(--maroon2)}
+  .tick{width:2px;height:10px;background:var(--ink);opacity:.45;display:inline-block}
+
+  /* options compared */
+  .opt{display:grid;grid-template-columns:120px 1fr 44px;gap:12px;align-items:center;margin-bottom:10px}
+  .opt .olbl{font-size:12.5px;color:var(--ink)}
+  .opt .otrack{height:22px;background:var(--bg);border-radius:6px;overflow:hidden}
+  .opt .ofill{height:100%;background:#DCD2C6;border-radius:6px;transition:width .4s}
+  .opt .oval{font-size:12.5px;font-weight:700;text-align:right;color:var(--muted)}
+  .opt.rec .ofill{background:var(--maroon)}
+  .opt.rec .olbl{font-weight:700;color:var(--maroon)}
+  .opt.rec .oval{color:var(--maroon)}
+  .opt-note{font-size:11.5px;color:var(--muted);margin-top:6px;font-style:italic}
+
+  /* actions */
+  .actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px}
+  .act{border-radius:9px;padding:13px 12px;font-size:14px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--ink);transition:all .12s;text-align:center}
+  .act:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+  .act.approve{border-color:var(--green);color:var(--green)}
+  .act.approve:hover{background:var(--green-t)}
+  .act.adjust:hover{background:var(--bg)}
+  .act.reject{border-color:var(--accent);color:var(--accent)}
+  .act.reject:hover{background:var(--accent-t)}
+  .act-caption{font-size:11px;color:var(--muted);text-align:center;margin-top:9px}
+
+  /* abstain */
+  .abstain-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--maroon2);background:var(--maroon-t);border-radius:20px;padding:5px 12px}
+  .abstain-title{font-family:var(--serif);font-size:22px;color:var(--ink);font-weight:700;margin:14px 0 6px}
+  .abstain-lead{font-size:14px;color:var(--ink);max-width:52ch}
+  .abstain-lead b{color:var(--maroon)}
+  .lowwhy{list-style:none;padding:0;margin:14px 0 0}
+  .lowwhy li{padding:6px 0 6px 20px;position:relative;font-size:13px;border-bottom:1px solid var(--line-soft)}
+  .lowwhy li:last-child{border-bottom:0}
+  .lowwhy li::before{content:"";position:absolute;left:3px;top:13px;width:5px;height:5px;border-radius:50%;background:var(--maroon2)}
+  .improve{margin-top:12px;font-size:12.5px;color:var(--muted);background:var(--bg);border-radius:8px;padding:10px 12px}
+  .still li{padding:6px 0 6px 20px;position:relative;font-size:13px;list-style:none}
+  .still{padding:0;margin:0}
+  .still li::before{content:"✓";position:absolute;left:0;top:5px;font-size:11px;color:var(--green)}
+
+  /* ---------- modal ---------- */
+  .scrim{position:fixed;inset:0;background:rgba(46,33,38,.4);display:none;align-items:center;justify-content:center;z-index:40;padding:20px}
+  .scrim.open{display:flex}
+  .modal{background:#fff;border-radius:14px;max-width:480px;width:100%;box-shadow:0 24px 60px rgba(46,33,38,.28);max-height:90vh;overflow:auto;animation:pop .22s ease}
+  @keyframes pop{from{opacity:0;transform:scale(.97) translateY(6px)}to{opacity:1;transform:none}}
+  .modal-head{padding:20px 22px 0}
+  .modal-head h2{font-family:var(--serif);font-size:20px;color:var(--maroon);margin:0 0 4px}
+  .modal-head .sub{font-size:12.5px;color:var(--muted)}
+  .modal-body{padding:16px 22px 4px}
+  .modal-foot{padding:14px 22px 20px;display:flex;gap:10px;justify-content:flex-end;border-top:1px solid var(--line-soft);margin-top:8px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  select,textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-family:inherit;font-size:13px;color:var(--ink);background:#fff}
+  textarea{resize:vertical;min-height:60px}
+  .changecost{font-size:13px;color:var(--ink);background:var(--bg);border-radius:8px;padding:10px 12px;margin:6px 0 4px}
+  .changecost b{color:var(--maroon)} .changecost .old{color:var(--muted)}
+  .reasons{display:flex;flex-direction:column;gap:2px}
+  .reason{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1px solid var(--line-soft);border-radius:8px;font-size:13px;cursor:pointer}
+  .reason:hover{background:var(--bg)}
+  .reason input{accent-color:var(--maroon)}
+  .reason.sel{border-color:var(--maroon);background:var(--maroon-t)}
+  .btn{border-radius:9px;padding:10px 16px;font-size:13px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--ink)}
+  .btn.primary{background:var(--maroon);border-color:var(--maroon);color:#fff}
+  .btn.primary:hover{background:#4a1b29}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+
+  /* toast */
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;box-shadow:0 12px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:all .25s;z-index:60;display:flex;align-items:center;gap:10px}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .toast .tk{color:#8FD3B3;font-weight:700}
+
+  /* decision log drawer */
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:340px;max-width:88vw;background:#fff;border-left:1px solid var(--line);box-shadow:-16px 0 40px rgba(46,33,38,.12);transform:translateX(100%);transition:transform .28s ease;z-index:50;display:flex;flex-direction:column}
+  .drawer.open{transform:none}
+  .drawer-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+  .drawer-head h2{font-family:var(--serif);font-size:17px;color:var(--maroon);margin:0}
+  .drawer-body{overflow:auto;padding:12px 16px;flex:1}
+  .log-empty{color:var(--muted);font-size:13px;text-align:center;margin-top:40px}
+  .log-item{border:1px solid var(--line-soft);border-radius:9px;padding:11px 12px;margin-bottom:10px}
+  .log-item .li-name{font-weight:600;font-size:13px}
+  .log-item .li-act{font-size:12px;margin-top:3px}
+  .log-item .li-reason{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .x{background:none;border:0;color:var(--muted);font-size:20px;line-height:1;padding:2px 6px}
+
+  footer{max-width:1080px;margin:0 auto;padding:0 24px 40px;color:var(--muted);font-size:11.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .notes-toggle{background:none;border:0;color:var(--muted);font-size:11.5px;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+
+  /* design notes (off by default) */
+  .note{display:none;font-size:11px;color:var(--maroon2);background:var(--maroon-t);border-left:2px solid var(--accent);border-radius:0 6px 6px 0;padding:8px 10px;margin-top:10px}
+  body.notes .note{display:block}
+
+  @media (max-width:820px){
+    .grid{grid-template-columns:1fr}
+    .summary{grid-template-columns:repeat(2,1fr)}
+    .summary .cell:nth-child(2){border-right:0}
+    .ctx{display:none}
+    thead th.hide-sm,td.hide-sm{display:none}
+    .actions{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <svg width="34" height="34" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="52" fill="none" stroke="#5C2233" stroke-width="9"/>
+      <rect x="30" y="42" width="60" height="9" rx="4.5" fill="#5C2233"/>
+      <rect x="30" y="60" width="43" height="9" rx="4.5" fill="#7D3348"/>
+      <rect x="30" y="78" width="26" height="9" rx="4.5" fill="#C4462F"/>
+    </svg>
+    <div class="wordmark">Clear<span>Sight</span></div>
+  </div>
+  <div class="ctx">Exit worklist &middot; <b>Summer Outdoor</b> &middot; Wk 6 of exit window</div>
+  <div class="top-right">
+    <button class="ghost" id="logBtn" aria-label="Open decision log">Decisions this session <span class="badge-count" id="logCount">0</span></button>
+  </div>
+</header>
+
+<main id="view"></main>
+
+<footer>
+  <div>ClearSight prototype &middot; synthetic data &middot; the decision loop (Screens 1&ndash;4 of the MVP)</div>
+  <button class="notes-toggle" id="notesBtn">Show design notes</button>
+</footer>
+
+<!-- reason / adjust modal -->
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modalTitle"></h2>
+      <div class="sub" id="modalSub"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-foot">
+      <button class="btn" id="modalCancel">Cancel</button>
+      <button class="btn primary" id="modalSave">Save decision</button>
+    </div>
+  </div>
+</div>
+
+<!-- decision log drawer -->
+<div class="drawer" id="drawer" aria-label="Decision log">
+  <div class="drawer-head">
+    <h2>Decision log</h2>
+    <button class="x" id="drawerClose" aria-label="Close">&times;</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"><div class="log-empty">No decisions yet this session.<br>Open an item to review it.</div></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- five store clusters (single source of truth, matches config screen) ---------- */
+const CLUSTERS = [
+  {key:"coastal", name:"Coastal high-volume", stores:38},
+  {key:"metro",   name:"Metro standard",      stores:94},
+  {key:"regional",name:"Regional standard",   stores:112},
+  {key:"cold",    name:"Cold-climate",        stores:41},
+  {key:"small",   name:"Small format",        stores:27}
+];
+const REASONS = ["Competitor activity","Range repeating next season","Store feedback","Stock quality issue","Other"];
+
+/* helper to build a cluster breakdown [{name,stores,st,plan}] */
+function cl(vals){ return CLUSTERS.map((c,i)=>({name:c.name,stores:c.stores,st:vals[i][0],plan:vals[i][1]})); }
+
+/* ---------- items, ranked by value at stake. Data is synthetic and internally consistent. ---------- */
+const ITEMS = [
+  { id:"rashvest", name:"Kids' rash vest, 5 colours", units:2400, stores:190, stake:"$186k", stakeNum:186000,
+    conf:"high", rec:"Cut 25% now", action:"Cut 25%", when:"this week", projected:82, vsFlat:61,
+    evidence:"14 analogue lines · 3 prior seasons",
+    why:[ "Sell-through is 18pts behind the same week last season",
+          "4 of 5 clusters are tracking below plan; Coastal is not",
+          "Analogue lines cleared at 25% with minimal residual",
+          "Holding 2 more weeks projects 71%, below the 80% target" ],
+    driver:"cluster-level sell-through gap",
+    clusters: cl([[78,72],[58,66],[54,64],[49,63],[52,62]]),
+    options:[ {label:"Hold — no cut",depth:"hold",pct:61},{label:"Cut 15% now",depth:"15%",pct:74},
+              {label:"Cut 25% now",depth:"25%",pct:82,rec:true},{label:"Cut 35% now",depth:"35%",pct:88} ],
+    optNote:"35% cut recovers less margin despite higher volume" },
+
+  { id:"tent", name:"Beach shade tent 3m", units:890, stores:140, stake:"$142k", stakeNum:142000,
+    conf:"high", rec:"Hold 2 weeks, then 30%", action:"Hold 2 weeks, then cut 30%", when:"in 2 weeks", projected:79, vsFlat:66,
+    evidence:"9 analogue lines · 2 prior seasons",
+    why:[ "Demand builds late for this line in warm regions",
+          "Coastal and Metro still clearing at full price",
+          "Cold-climate is the only cluster behind plan",
+          "Cutting now projects 71%; holding then cutting projects 79%" ],
+    driver:"late-season demand curve",
+    clusters: cl([[74,70],[69,68],[63,62],[47,60],[58,58]]),
+    options:[ {label:"Cut 30% now",depth:"30% now",pct:71},{label:"Hold 1 wk, 30%",depth:"hold 1wk",pct:75},
+              {label:"Hold 2 wks, 30%",depth:"hold 2wk",pct:79,rec:true},{label:"Hold 3 wks, 30%",depth:"hold 3wk",pct:77} ],
+    optNote:"Holding beyond 2 weeks risks running into the intake window" },
+
+  { id:"lounger", name:"Inflatable lounger", units:1650, stores:210, stake:"$118k", stakeNum:118000,
+    conf:"medium", rec:"Cut 15% now", action:"Cut 15%", when:"this week", projected:73, vsFlat:64,
+    evidence:"6 analogue lines · 2 prior seasons · conflicting cluster signals",
+    why:[ "Overall sell-through is 9pts behind plan",
+          "Metro and Regional clearing well; Coastal and Small format lagging",
+          "Signals conflict across clusters, so confidence is medium",
+          "A deeper cut is not yet justified by the evidence" ],
+    driver:"conflicting cluster signals",
+    mediumNote:"Confidence is medium: clusters disagree. Review the breakdown before acting.",
+    clusters: cl([[55,64],[71,66],[68,63],[57,61],[52,62]]),
+    options:[ {label:"Hold — no cut",depth:"hold",pct:64},{label:"Cut 15% now",depth:"15%",pct:73,rec:true},
+              {label:"Cut 25% now",depth:"25%",pct:80},{label:"Cut 35% now",depth:"35%",pct:85} ],
+    optNote:"Revisit in 1 week; a second read may raise or lower confidence" },
+
+  { id:"cooler", name:"Cooler bag 24L", units:1100, stores:120, stake:"$97k", stakeNum:97000,
+    conf:"none", rec:"No recommendation",
+    lowWhy:[ "New line — no prior-season history for this item",
+             "Only 2 analogue lines matched, both weakly",
+             "Cluster demand signals conflict: 3 up, 2 down" ],
+    improve:"Confidence would improve with 3+ more weeks of in-season sales, or a stronger attribute match.",
+    still:[ "Sell-through to date by cluster","Stock on hand and cover weeks","Comparable lines and how they cleared" ],
+    clusters: cl([[61,60],[58,62],[64,61],[45,59],[57,60]]) },
+
+  { id:"goggles", name:"Swim goggles junior", units:3200, stores:250, stake:"$76k", stakeNum:76000,
+    conf:"high", rec:"Cut 20% in 1 week", action:"Cut 20%", when:"in 1 week", projected:84, vsFlat:69,
+    evidence:"17 analogue lines · 3 prior seasons",
+    why:[ "High volume, low unit margin — timing matters more than depth",
+          "All clusters tracking slightly below plan",
+          "Analogues cleared cleanly at 20% one week out",
+          "A 30% cut adds volume but gives away margin unnecessarily" ],
+    driver:"volume clearance timing",
+    clusters: cl([[64,68],[61,66],[59,65],[57,64],[60,64]]),
+    options:[ {label:"Cut 20% now",depth:"20% now",pct:81},{label:"Cut 20% in 1 wk",depth:"20% 1wk",pct:84,rec:true},
+              {label:"Cut 30% now",depth:"30% now",pct:88},{label:"Hold — no cut",depth:"hold",pct:69} ],
+    optNote:"30% clears faster but recovers less margin per unit" },
+
+  { id:"sunhat", name:"Sun hat, kids", units:2100, stores:205, stake:"$64k", stakeNum:64000,
+    conf:"high", rec:"Cut 20% now", action:"Cut 20%", when:"this week", projected:80, vsFlat:63,
+    evidence:"12 analogue lines · 3 prior seasons",
+    why:[ "Sell-through 15pts behind the same week last season",
+          "4 of 5 clusters behind plan",
+          "Short remaining season leaves little room to hold",
+          "Analogues cleared at 20% with minimal residual" ],
+    driver:"cluster-level sell-through gap",
+    clusters: cl([[71,70],[55,65],[52,64],[50,62],[54,63]]),
+    options:[ {label:"Hold — no cut",depth:"hold",pct:63},{label:"Cut 15% now",depth:"15%",pct:72},
+              {label:"Cut 20% now",depth:"20%",pct:80,rec:true},{label:"Cut 30% now",depth:"30%",pct:85} ],
+    optNote:"20% clears the target without over-discounting Coastal" },
+
+  { id:"rug", name:"Picnic rug", units:760, stores:150, stake:"$58k", stakeNum:58000,
+    conf:"medium", rec:"Hold 1 week, then 25%", action:"Hold 1 week, then cut 25%", when:"in 1 week", projected:75, vsFlat:66,
+    evidence:"5 analogue lines · 2 prior seasons · thin recent signal",
+    why:[ "Sell-through is close to plan overall",
+          "Regional strong; Coastal and Cold-climate soft",
+          "Recent weeks are thin, so confidence is medium",
+          "A short hold lets a clearer signal form before cutting" ],
+    driver:"thin recent signal",
+    mediumNote:"Confidence is medium: recent sales are sparse. A one-week hold sharpens the read.",
+    clusters: cl([[59,64],[70,66],[63,62],[52,61],[60,62]]),
+    options:[ {label:"Cut 25% now",depth:"25% now",pct:70},{label:"Hold 1 wk, 25%",depth:"hold 1wk",pct:75,rec:true},
+              {label:"Hold 2 wks, 25%",depth:"hold 2wk",pct:74},{label:"Hold — no cut",depth:"hold",pct:66} ],
+    optNote:"Holding past one week gains little and risks the intake window" },
+
+  { id:"cushion", name:"Garden lounger cushion", units:640, stores:110, stake:"$47k", stakeNum:47000,
+    conf:"none", rec:"No recommendation",
+    lowWhy:[ "Attribute data is incomplete for this line",
+             "Analogues span two very different product shapes",
+             "Cluster demand signals conflict: 2 up, 3 down" ],
+    improve:"Confidence would improve with cleaner attribute data, or 2+ more weeks of in-season sales.",
+    still:[ "Sell-through to date by cluster","Stock on hand and cover weeks","The two analogue lines and how they cleared" ],
+    clusters: cl([[52,60],[57,62],[49,61],[63,60],[47,59]]) }
+];
+
+/* ---------- session state ---------- */
+let itemsAtRisk = 184, valueAtStake = 1200000, routedToManual = 31, reviewedToday = 42;
+const decisions = []; // {id,name,action,reason,detail}
+const decidedIds = new Set();
+
+const $ = s => document.querySelector(s);
+const view = $("#view");
+
+/* ---------- render worklist ---------- */
+function fmtM(n){ return "$" + (n/1e6).toFixed(1) + "m"; }
+function statusOf(id){ const d = decisions.find(x=>x.id===id); return d ? d.status : null; }
+
+function renderWorklist(){
+  const rows = ITEMS.map(it=>{
+    const st = statusOf(it.id);
+    const conf = it.conf;
+    const pill = conf==="none"
+      ? `<span class="pill none"><span class="dot"></span>Low — manual</span>`
+      : `<span class="pill ${conf}"><span class="dot"></span>${conf==="high"?"High":"Medium"}</span>`;
+    const recCell = conf==="none" ? `<span class="rec-none">No recommendation</span>` : `<span class="rec-text">${it.rec}</span>`;
+    const statusCell = st ? `<span class="status ${st}">${st}</span>` : pill;
+    return `<tr class="${st?'decided':''}" tabindex="0" data-id="${it.id}" role="button" aria-label="Open ${it.name}">
+      <td><div class="item-name">${it.name}</div><div class="item-sub">${it.units.toLocaleString()} units · ${it.stores} stores</div></td>
+      <td class="r"><span class="stake">${it.stake}</span></td>
+      <td class="hide-sm">${recCell}</td>
+      <td class="r">${statusCell}</td>
+    </tr>`;
+  }).join("");
+
+  view.className = "fade";
+  view.innerHTML = `
+    <div class="page-head">
+      <h1>Exit worklist</h1>
+      <div class="filter">Filter: all clusters ▾</div>
+    </div>
+    <div class="summary">
+      <div class="cell"><div class="num tnum" id="s-items">${itemsAtRisk}</div><div class="lbl">items at risk</div></div>
+      <div class="cell"><div class="num tnum" id="s-val">${fmtM(valueAtStake)}</div><div class="lbl">value at stake</div></div>
+      <div class="cell"><div class="num warn tnum" id="s-man">${routedToManual}</div><div class="lbl">routed to manual</div></div>
+      <div class="cell"><div class="num ok tnum" id="s-rev">${reviewedToday}</div><div class="lbl">reviewed today</div></div>
+    </div>
+    <p class="note">Items are ordered by value at stake, not discount size or alphabetically. Attention is the scarce resource, so the list spends it where a wrong call costs the most. Low-confidence items are not hidden; they stay in the list, labelled, and routed to manual.</p>
+    <table>
+      <thead><tr>
+        <th>Item</th><th class="r">At stake</th><th class="hide-sm">Recommendation</th><th class="r">Confidence</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+  view.querySelectorAll("tbody tr").forEach(tr=>{
+    tr.addEventListener("click",()=>openItem(tr.dataset.id));
+    tr.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();openItem(tr.dataset.id);} });
+  });
+}
+
+/* ---------- cluster breakdown block ---------- */
+function clusterBlock(it){
+  const rows = it.clusters.map(c=>{
+    const below = c.st < c.plan;
+    return `<div class="cl-row">
+        <div class="cl-name">${c.name}<span class="st-stores">${c.stores} stores</span></div>
+        <div class="cl-val ${below?'below':''}">${c.st}%</div>
+        <div class="cl-bar"><i style="width:${c.st}%"></i><span class="plan" style="left:${c.plan}%"></span></div>
+      </div>`;
+  }).join("");
+  return `<div class="card cl">
+      <h3>Sell-through by cluster</h3>
+      ${rows}
+      <div class="cl-legend">
+        <span><span class="swatch"></span> sell-through to date</span>
+        <span><span class="tick"></span> planned for this week</span>
+      </div>
+    </div>`;
+}
+
+/* ---------- render detail ---------- */
+function openItem(id){
+  const it = ITEMS.find(x=>x.id===id);
+  drawerClose();
+  it.conf==="none" ? renderAbstain(it) : renderRecommendation(it);
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderRecommendation(it){
+  const opts = it.options.map(o=>`
+    <div class="opt ${o.rec?'rec':''}">
+      <div class="olbl">${o.label}</div>
+      <div class="otrack"><div class="ofill" style="width:${o.pct}%"></div></div>
+      <div class="oval">${o.pct}%</div>
+    </div>`).join("");
+  const confPill = it.conf==="high"
+     ? `<span class="pill high"><span class="dot"></span>High</span>`
+     : `<span class="pill medium"><span class="dot"></span>Medium</span>`;
+  const mediumBanner = it.mediumNote ? `<div class="improve" style="margin-top:14px">${it.mediumNote}</div>` : "";
+
+  view.className="fade";
+  view.innerHTML = `
+    <button class="back" id="back">← Back to worklist</button>
+    <div class="detail-head">
+      <h1>${it.name}</h1>
+      <div class="meta">${it.units.toLocaleString()} units · ${it.stake} at stake · ${it.stores} stores</div>
+    </div>
+    <div class="grid">
+      <div>
+        <div class="card rec-hero">
+          <div class="eyebrow">Recommendation</div>
+          <div class="rec-action">${it.action} <span style="color:var(--muted);font-weight:400;font-size:20px">— ${it.when}</span></div>
+          <div class="rec-proj">Projected <b>${it.projected}% sell-through</b> by end of window <span class="flat">vs ${it.vsFlat}% under the current flat schedule</span></div>
+          <div class="conf-row">${confPill}<span class="conf-evidence">${it.evidence}</span></div>
+          ${mediumBanner}
+          <div class="actions">
+            <button class="act approve" id="a-approve">Approve</button>
+            <button class="act adjust"  id="a-adjust">Adjust</button>
+            <button class="act reject"  id="a-reject">Reject</button>
+          </div>
+          <div class="act-caption">Approve is one click. Adjust and Reject are one click too, and each captures a reason.</div>
+          <p class="note">The three actions carry equal visual weight on purpose. If Approve were the loud, obvious button, the review would drift toward rubber-stamping. Overriding must never be harder than agreeing.</p>
+        </div>
+        <div class="card opts">
+          <h3>Options compared</h3>
+          ${opts}
+          <div class="opt-note">${it.optNote}</div>
+          <p class="note">Alternatives are shown, not just the pick. Showing only the chosen option turns a recommendation into an instruction.</p>
+        </div>
+      </div>
+      <div>
+        <div class="card why">
+          <h3>Why this recommendation</h3>
+          <ul class="why-list">${it.why.map(w=>`<li>${w}</li>`).join("")}</ul>
+          <div class="driver">Largest driver: <b>${it.driver}</b></div>
+          <p class="note">Reasons are in the planner's own vocabulary — cluster sell-through, analogue lines — not model internals or feature weights.</p>
+        </div>
+        ${clusterBlock(it)}
+      </div>
+    </div>`;
+  $("#back").onclick = renderWorklist;
+  $("#a-approve").onclick = ()=>approve(it);
+  $("#a-adjust").onclick  = ()=>openAdjust(it);
+  $("#a-reject").onclick  = ()=>openReject(it);
+}
+
+function renderAbstain(it){
+  view.className="fade";
+  view.innerHTML = `
+    <button class="back" id="back">← Back to worklist</button>
+    <div class="detail-head">
+      <h1>${it.name}</h1>
+      <div class="meta">${it.units.toLocaleString()} units · ${it.stake} at stake · ${it.stores} stores</div>
+    </div>
+    <div class="grid">
+      <div>
+        <div class="card">
+          <span class="abstain-badge"><span class="dot"></span>No recommendation · routed to manual</span>
+          <div class="abstain-title">The decision stays with you</div>
+          <div class="abstain-lead">ClearSight does not have enough signal to recommend a markdown for this item. It won't guess. <b>You make the call, with the evidence below.</b></div>
+          <h3 style="margin-top:20px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Why confidence is low</h3>
+          <ul class="lowwhy">${it.lowWhy.map(w=>`<li>${w}</li>`).join("")}</ul>
+          <div class="improve">${it.improve}</div>
+          <p class="note">Most AI products degrade into worse predictions. This one degrades into silence. Naming <em>why</em> confidence is low also teaches the planner when to trust the tool elsewhere.</p>
+          <div class="actions" style="grid-template-columns:1fr">
+            <button class="act" id="a-manual" style="border-color:var(--maroon2);color:var(--maroon2)">Record my decision</button>
+          </div>
+          <div class="act-caption">Logged as a manual decision. The outcome is still tracked for evaluation.</div>
+        </div>
+      </div>
+      <div>
+        <div class="card evi">
+          <h3>What you can still see</h3>
+          <ul class="still">${it.still.map(s=>`<li>${s}</li>`).join("")}</ul>
+          <p class="note">Withholding a number is not the same as withholding help. The evidence is all here; only the suggested answer is missing.</p>
+        </div>
+        ${clusterBlock(it)}
+      </div>
+    </div>`;
+  $("#back").onclick = renderWorklist;
+  $("#a-manual").onclick = ()=>openManual(it);
+}
+
+/* ---------- decisions ---------- */
+function recordDecision(it, status, action, reason){
+  if(!decidedIds.has(it.id)){
+    decidedIds.add(it.id);
+    itemsAtRisk = Math.max(0, itemsAtRisk-1);
+    valueAtStake = Math.max(0, valueAtStake - it.stakeNum);
+    reviewedToday += 1;
+  }
+  const existing = decisions.find(d=>d.id===it.id);
+  const rec = {id:it.id, name:it.name, status, action, reason};
+  if(existing){ Object.assign(existing, rec); } else { decisions.unshift(rec); }
+  $("#logCount").textContent = decisions.length;
+  renderLog();
+}
+
+function approve(it){
+  recordDecision(it,"approved",it.action,null);
+  toast(`Approved — ${it.action}`, "Approved");
+  renderWorklist();
+}
+function toast(msg, kw){
+  const t=$("#toast");
+  t.innerHTML = (kw?`<span class="tk">${kw}.</span> `:"") + msg;
+  t.classList.add("show");
+  clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("show"),2600);
+}
+
+/* ---------- modals ---------- */
+const scrim=$("#scrim"), modalTitle=$("#modalTitle"), modalSub=$("#modalSub"),
+      modalBody=$("#modalBody"), modalSave=$("#modalSave"), modalCancel=$("#modalCancel");
+let modalCtx=null;
+
+function closeModal(){ scrim.classList.remove("open"); modalCtx=null; }
+modalCancel.onclick=closeModal;
+scrim.addEventListener("click",e=>{ if(e.target===scrim) closeModal(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeModal(); drawerClose(); } });
+
+function reasonListHTML(){
+  return `<div class="field"><label>Reason</label><div class="reasons">${
+    REASONS.map((r,i)=>`<label class="reason" data-r="${r}"><input type="radio" name="reason" value="${r}"> ${r}</label>`).join("")
+  }</div></div>
+  <div class="field"><label>Add detail (optional)</label><textarea id="reasonText" placeholder="Anything the reason code doesn't capture…"></textarea></div>`;
+}
+function wireReasons(){
+  modalBody.querySelectorAll(".reason").forEach(el=>{
+    el.addEventListener("click",()=>{
+      modalBody.querySelectorAll(".reason").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel"); el.querySelector("input").checked=true;
+      validateReason();
+    });
+  });
+}
+function selectedReason(){ const s=modalBody.querySelector(".reason.sel"); return s?s.dataset.r:null; }
+function validateReason(){ modalSave.disabled = !selectedReason(); }
+
+function openReject(it){
+  modalTitle.textContent="Reject this recommendation";
+  modalSub.textContent=`ClearSight recommended: ${it.rec}`;
+  modalBody.innerHTML = reasonListHTML();
+  modalSave.textContent="Save decision"; modalSave.disabled=true;
+  wireReasons();
+  modalSave.onclick=()=>{
+    const r=selectedReason(); const note=$("#reasonText").value.trim();
+    recordDecision(it,"rejected","Rejected", note?`${r} — ${note}`:r);
+    closeModal(); toast(`Rejected — reason: ${r}`,"Rejected"); renderWorklist();
+  };
+  scrim.classList.add("open");
+}
+
+function openAdjust(it){
+  modalTitle.textContent="Adjust this recommendation";
+  modalSub.textContent=`ClearSight recommended: ${it.rec}`;
+  const depthOpts = ["Hold — no cut","10%","15%","20%","25%","30%","35%"];
+  const timingOpts = ["now","in 1 week","in 2 weeks","in 3 weeks"];
+  modalBody.innerHTML = `
+    <div class="field"><label>Depth</label>
+      <select id="adjDepth">${depthOpts.map(d=>`<option ${d.startsWith(it.action.match(/\d+%/)?it.action.match(/\d+%/)[0]:'x')?'selected':''}>${d}</option>`).join("")}</select></div>
+    <div class="field"><label>Timing</label>
+      <select id="adjTime">${timingOpts.map(t=>`<option ${t===it.when?'selected':''}>${t}</option>`).join("")}</select></div>
+    <div class="changecost" id="adjCost"></div>
+    ${reasonListHTML()}`;
+  modalSave.textContent="Save decision"; modalSave.disabled=true;
+  wireReasons();
+
+  // project sell-through from selected depth using the item's options where available
+  function projFor(depthLabel){
+    const map = {"Hold — no cut":it.vsFlat};
+    it.options.forEach(o=>{ const m=o.label.match(/(\d+)%/); if(m) map[m[1]+"%"]=o.pct; });
+    if(depthLabel in map) return map[depthLabel];
+    // interpolate roughly for depths not explicitly modelled
+    const m=depthLabel.match(/(\d+)/);
+    if(!m) return it.projected;
+    const d=+m[1];
+    const pts=Object.keys(map).map(k=>({d:+((k.match(/(\d+)/)||[0,0])[1]),p:map[k]})).filter(x=>x.d>0).sort((a,b)=>a.d-b.d);
+    if(!pts.length) return it.projected;
+    if(d<=pts[0].d) return pts[0].p;
+    if(d>=pts[pts.length-1].d) return pts[pts.length-1].p;
+    for(let i=0;i<pts.length-1;i++){ if(d>=pts[i].d&&d<=pts[i+1].d){ const t=(d-pts[i].d)/(pts[i+1].d-pts[i].d); return Math.round(pts[i].p+t*(pts[i+1].p-pts[i].p)); } }
+    return it.projected;
+  }
+  function refreshCost(){
+    const d=$("#adjDepth").value;
+    const p=projFor(d);
+    const delta=p-it.projected;
+    const arrow = delta===0?"":(delta>0?`(+${delta} pts)`:`(${delta} pts)`);
+    $("#adjCost").innerHTML = `Projected sell-through with your change: <b>${p}%</b> <span class="old">vs ${it.projected}% recommended ${arrow}</span>`;
+  }
+  $("#adjDepth").onchange=refreshCost; $("#adjTime").onchange=refreshCost; refreshCost();
+
+  modalSave.onclick=()=>{
+    const r=selectedReason(); const note=$("#reasonText").value.trim();
+    const d=$("#adjDepth").value, t=$("#adjTime").value;
+    const label = d==="Hold — no cut" ? "Hold — no cut" : `${d} ${t}`;
+    recordDecision(it,"adjusted",label, note?`${r} — ${note}`:r);
+    closeModal(); toast(`Adjusted to ${label} — reason: ${r}`,"Adjusted"); renderWorklist();
+  };
+  scrim.classList.add("open");
+}
+
+function openManual(it){
+  modalTitle.textContent="Record a manual decision";
+  modalSub.textContent="ClearSight made no recommendation for this item.";
+  const depthOpts = ["Hold — no cut","10%","15%","20%","25%","30%","35%"];
+  const timingOpts = ["now","in 1 week","in 2 weeks","in 3 weeks"];
+  modalBody.innerHTML = `
+    <div class="field"><label>Your decision — depth</label><select id="mDepth">${depthOpts.map(d=>`<option>${d}</option>`).join("")}</select></div>
+    <div class="field"><label>Timing</label><select id="mTime">${timingOpts.map(t=>`<option>${t}</option>`).join("")}</select></div>
+    <div class="field"><label>Note (optional)</label><textarea id="mNote" placeholder="Why you made this call…"></textarea></div>`;
+  modalSave.textContent="Save decision"; modalSave.disabled=false;
+  modalSave.onclick=()=>{
+    const d=$("#mDepth").value, t=$("#mTime").value, note=$("#mNote").value.trim();
+    const label = d==="Hold — no cut" ? "Hold — no cut (manual)" : `${d} ${t} (manual)`;
+    recordDecision(it,"manual",label, note||"Manual decision — no signal");
+    closeModal(); toast(`Manual decision saved — ${label}`,"Logged"); renderWorklist();
+  };
+  scrim.classList.add("open");
+}
+
+/* ---------- decision log drawer ---------- */
+const drawer=$("#drawer");
+$("#logBtn").onclick=()=>drawer.classList.toggle("open");
+$("#drawerClose").onclick=drawerClose;
+function drawerClose(){ drawer.classList.remove("open"); }
+function renderLog(){
+  const b=$("#drawerBody");
+  if(!decisions.length){ b.innerHTML=`<div class="log-empty">No decisions yet this session.<br>Open an item to review it.</div>`; return; }
+  b.innerHTML = decisions.map(d=>`
+    <div class="log-item">
+      <div class="li-name">${d.name}</div>
+      <div class="li-act"><span class="status ${d.status}">${d.status}</span> &nbsp;${d.action}</div>
+      ${d.reason?`<div class="li-reason">Reason: ${d.reason}</div>`:``}
+    </div>`).join("");
+}
+
+/* ---------- design-notes toggle ---------- */
+$("#notesBtn").onclick=function(){
+  document.body.classList.toggle("notes");
+  this.textContent = document.body.classList.contains("notes") ? "Hide design notes" : "Show design notes";
+};
+
+/* ---------- go ---------- */
+renderWorklist();
+</script>
+</body>
+</html>
