@@ -18,7 +18,6 @@ price, and where it lacks signal it shows no recommendation at all and says why.
 | `04_Prototype_README.md` | Prototype scope and what it does / does not prove |
 | `05_AI_Collaboration_Log.md` | How AI was used, where it was wrong, what we corrected |
 | `06_Individual_Contribution_Statement.md` | Per-member contribution (to fill in) |
-| `Presenter_Script.md` | Talk track matched to the 10-slide deck, with Q&A |
 | `Appendix/PRD/` | PM Artifact Pack (problem, persona, JTBD, PRD, prioritisation, roadmap, metrics) |
 | `Appendix/UX_Trust/` | UX, workflow and trust design write-up |
 | `Appendix/Wireframes/` | The seven screens (01-07) plus a seven-screen overview |
@@ -27,10 +26,7 @@ price, and where it lacks signal it shows no recommendation at all and says why.
 
 ## Status
 
-Complete: Executive Summary, PM Artifact Pack, UX / trust design, wireframes, deck, AI log, presenter script.
-Still to do before submission: consolidate the Data/Model/Evaluation, Economics/Scaling, and
-Ethics/Governance/Risk sections (add bias + privacy); write the Individual Contribution
-Statement; and build the clickable prototype. See `02_Final_Report.md`.
+Complete: Executive Summary, PM Artifact Pack, UX / trust design, wireframes, deck.
 
 ## Data note
 
