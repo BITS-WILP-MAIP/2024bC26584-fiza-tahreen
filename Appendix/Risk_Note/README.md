@@ -1,0 +1,1 @@
+Risk note lives in 01_Executive_Summary.md (Main Risks) and Appendix/PRD/PM_Artifact_Pack.md section 6. TO ADD before submission: bias (store-cluster demographic proxies) and privacy. See 02_Final_Report.md.

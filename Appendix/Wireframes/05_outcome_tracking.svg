@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 596" width="1010" height="596" font-family='Helvetica, Arial, sans-serif'>
+  <rect width="1010" height="596" fill="#F7F1E8"/>
+  <text x="28" y="34" font-size="15" font-weight="bold" fill="#5C2233">Screen 5 — Outcome tracking (Phase 3)</text>
+  <text x="28" y="54" font-size="11.5" fill="#6E5B62">Whether it is working. Shown once decisions are live — in Phase 2 shadow mode, only the engagement metrics apply.</text>
+  <rect x="28" y="70" width="700" height="496" rx="6" fill="#FFFFFF" stroke="#C9BDB4"/>
+  <line x1="28" y1="112" x2="728" y2="112" stroke="#C9BDB4"/>
+  <text x="46" y="97" font-size="13" font-weight="bold" fill="#2E2126">Season performance — Summer Outdoor</text>
+  <text x="560" y="97" font-size="10" fill="#6E5B62">Phase 3 pilot · Wk 6 · vs matched control</text>
+
+  <!-- headline metrics -->
+  <rect x="46" y="130" width="206" height="86" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="64" y="152" font-size="9.5" fill="#6E5B62" letter-spacing="1.2">MARGIN RECOVERED</text>
+  <text x="64" y="184" font-size="26" font-weight="bold" fill="#3F7A5E">+$312k</text>
+  <text x="64" y="202" font-size="9.5" fill="#6E5B62">vs flat rule baseline</text>
+  <rect x="268" y="130" width="206" height="86" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="286" y="152" font-size="9.5" fill="#6E5B62" letter-spacing="1.2">ACCEPTANCE RATE</text>
+  <text x="286" y="184" font-size="26" font-weight="bold" fill="#3F7A5E">68%</text>
+  <text x="286" y="202" font-size="9.5" fill="#6E5B62">healthy band 50–85%</text>
+  <rect x="490" y="130" width="206" height="86" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="508" y="152" font-size="9.5" fill="#6E5B62" letter-spacing="1.2">HIGH-CONF. ERRORS</text>
+  <text x="508" y="184" font-size="26" font-weight="bold" fill="#B07D2A">3</text>
+  <text x="508" y="202" font-size="9.5" fill="#6E5B62">of 412 acted on</text>
+  <rect x="46" y="234" width="400" height="192" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="66" y="258" font-size="11" font-weight="bold" fill="#5C2233">Acceptance rate over time</text>
+  <line x1="66" y1="290" x2="426" y2="290" stroke="#C4462F" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="330" y="286" font-size="8.5" fill="#C4462F">CEILING 85% — review has stopped</text>
+  <line x1="66" y1="384" x2="426" y2="384" stroke="#C9BDB4"/>
+  <polyline points="70,368 118,356 166,344 214,338 262,330 310,326 358,322 406,320"
+            fill="none" stroke="#3F7A5E" stroke-width="2.5"/>
+  <circle cx="70" cy="368" r="3" fill="#3F7A5E"/>
+  <circle cx="118" cy="356" r="3" fill="#3F7A5E"/>
+  <circle cx="166" cy="344" r="3" fill="#3F7A5E"/>
+  <circle cx="214" cy="338" r="3" fill="#3F7A5E"/>
+  <circle cx="262" cy="330" r="3" fill="#3F7A5E"/>
+  <circle cx="310" cy="326" r="3" fill="#3F7A5E"/>
+  <circle cx="358" cy="322" r="3" fill="#3F7A5E"/>
+  <circle cx="406" cy="320" r="3" fill="#3F7A5E"/>
+  <text x="66" y="400" font-size="8.5" fill="#6E5B62">Wk 1</text>
+  <text x="390" y="400" font-size="8.5" fill="#6E5B62">Wk 8</text>
+
+  <!-- override reasons -->
+  <rect x="462" y="234" width="248" height="192" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="480" y="258" font-size="11" font-weight="bold" fill="#5C2233">Why planners overrode</text>
+  <text x="480" y="278" font-size="9.5" fill="#2E2126">Competitor activity</text>
+  <rect x="480" y="283" width="156.39999999999998" height="7" rx="3.5" fill="#C4462F"/>
+  <text x="694" y="278" font-size="9.5" fill="#6E5B62" text-anchor="end">34%</text>
+  <text x="480" y="305" font-size="9.5" fill="#2E2126">Range repeating</text>
+  <rect x="480" y="310" width="119.6" height="7" rx="3.5" fill="#7D3348"/>
+  <text x="694" y="305" font-size="9.5" fill="#6E5B62" text-anchor="end">26%</text>
+  <text x="480" y="332" font-size="9.5" fill="#2E2126">Store feedback</text>
+  <rect x="480" y="337" width="87.39999999999999" height="7" rx="3.5" fill="#7D3348"/>
+  <text x="694" y="332" font-size="9.5" fill="#6E5B62" text-anchor="end">19%</text>
+  <text x="480" y="359" font-size="9.5" fill="#2E2126">Stock quality</text>
+  <rect x="480" y="364" width="55.199999999999996" height="7" rx="3.5" fill="#6E5B62"/>
+  <text x="694" y="359" font-size="9.5" fill="#6E5B62" text-anchor="end">12%</text>
+  <text x="480" y="386" font-size="9.5" fill="#2E2126">Other</text>
+  <rect x="480" y="391" width="41.4" height="7" rx="3.5" fill="#6E5B62"/>
+  <text x="694" y="386" font-size="9.5" fill="#6E5B62" text-anchor="end">9%</text>
+  <text x="480" y="415" font-size="8.5" fill="#C4462F">Competitor activity rising — missing feature?</text>
+
+  <!-- holdout -->
+  <rect x="46" y="442" width="664" height="98" rx="6" fill="#F1E7DC" stroke="#C9BDB4"/>
+  <text x="66" y="466" font-size="11" font-weight="bold" fill="#5C2233">Holdout categories (no ClearSight recommendations)</text>
+  <text x="66" y="490" font-size="10.5" fill="#2E2126">Beach &amp; Water · Outdoor Furniture — run on the flat rule for the full season</text>
+  <text x="66" y="510" font-size="10" fill="#6E5B62">Margin per unit: holdout $4.12 · ClearSight categories $5.87</text>
+  <text x="66" y="528" font-size="10" fill="#6E5B62">Purpose: detect drift and feedback-loop effects once the model influences the prices it later learns from</text>
+  <line x1="734" y1="171" x2="744" y2="171" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="175" font-size="10" fill="#C4462F">Three metric layers on one</text>
+  <text x="748" y="188" font-size="10" fill="#C4462F">screen: business, product,</text>
+  <text x="748" y="201" font-size="10" fill="#C4462F">and the trust metric that</text>
+  <text x="748" y="214" font-size="10" fill="#C4462F">can embarrass the product</text>
+  <line x1="734" y1="286" x2="744" y2="286" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="290" font-size="10" fill="#C4462F">The ceiling is drawn on the</text>
+  <text x="748" y="303" font-size="10" fill="#C4462F">chart. 100% acceptance is</text>
+  <text x="748" y="316" font-size="10" fill="#C4462F">shown as a failure line,</text>
+  <text x="748" y="329" font-size="10" fill="#C4462F">not a goal</text>
+  <line x1="734" y1="356" x2="744" y2="356" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="360" font-size="10" fill="#C4462F">Override reasons in</text>
+  <text x="748" y="373" font-size="10" fill="#C4462F">aggregate surface missing</text>
+  <text x="748" y="386" font-size="10" fill="#C4462F">features — this is product</text>
+  <text x="748" y="399" font-size="10" fill="#C4462F">feedback, not noise</text>
+  <line x1="734" y1="466" x2="744" y2="466" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="470" font-size="10" fill="#C4462F">Holdout categories are</text>
+  <text x="748" y="483" font-size="10" fill="#C4462F">the drift control, visible</text>
+  <text x="748" y="496" font-size="10" fill="#C4462F">to the planner rather than</text>
+  <text x="748" y="509" font-size="10" fill="#C4462F">buried in a model report</text>
+
+</svg>

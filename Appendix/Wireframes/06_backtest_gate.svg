@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 584" width="1010" height="584" font-family='Helvetica, Arial, sans-serif'>
+  <rect width="1010" height="584" fill="#F7F1E8"/>
+  <text x="28" y="34" font-size="15" font-weight="bold" fill="#5C2233">Screen 6 — Backtest evidence (Phase 1)</text>
+  <text x="28" y="54" font-size="11.5" fill="#6E5B62">The go/no-go gate. No interface for planners — this exists to decide whether to build one.</text>
+  <rect x="28" y="70" width="700" height="484" rx="6" fill="#FFFFFF" stroke="#C9BDB4"/>
+  <line x1="28" y1="112" x2="728" y2="112" stroke="#C9BDB4"/>
+  <text x="46" y="97" font-size="13" font-weight="bold" fill="#2E2126">Backtest — held-out season, Summer 2 seasons ago</text>
+  <text x="596" y="97" font-size="10" fill="#6E5B62">Phase 1 gate</text>
+
+  <rect x="46" y="130" width="664" height="86" rx="6" fill="#EDF3EF" stroke="#3F7A5E" stroke-width="1.5"/>
+  <text x="66" y="154" font-size="10" fill="#3F7A5E" letter-spacing="1.4">GATE RESULT</text>
+  <text x="66" y="182" font-size="19" font-weight="bold" fill="#5C2233">Beats the flat rule by 9.4% margin recovered</text>
+  <text x="66" y="200" font-size="10.5" fill="#6E5B62">Must beat both baselines by +5% — threshold fixed before the test was run</text>
+
+  <rect x="46" y="234" width="400" height="196" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="66" y="258" font-size="11" font-weight="bold" fill="#5C2233">Margin recovered vs baselines</text>
+  <text x="66" y="286" font-size="10" fill="#2E2126">ClearSight</text>
+  <rect x="66" y="292" width="330.0" height="16" rx="4" fill="#3F7A5E"/>
+  <text x="404.0" y="305" font-size="9.5" font-weight="bold" fill="#3F7A5E">100</text>
+  <text x="66" y="328" font-size="10" fill="#2E2126">Analogue matching</text>
+  <rect x="66" y="334" width="244.2" height="16" rx="4" fill="#7D3348"/>
+  <text x="318.2" y="347" font-size="9.5" font-weight="bold" fill="#7D3348">74</text>
+  <text x="66" y="370" font-size="10" fill="#2E2126">Flat 30% at wk 8</text>
+  <rect x="66" y="376" width="224.39999999999998" height="16" rx="4" fill="#6E5B62"/>
+  <text x="298.4" y="389" font-size="9.5" font-weight="bold" fill="#6E5B62">68</text>
+  <text x="66" y="414" font-size="9" fill="#6E5B62">Indexed. Recommendations made at week N using only</text>
+  <text x="66" y="427" font-size="9" fill="#6E5B62">data available at week N — no look-ahead.</text>
+
+  <rect x="462" y="234" width="248" height="196" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="480" y="258" font-size="11" font-weight="bold" fill="#5C2233">Where it failed</text>
+  <text x="480" y="284" font-size="10" fill="#2E2126">• Lost to baseline in 3 of 14 clusters</text>
+  <text x="480" y="306" font-size="10" fill="#2E2126">• All 3 were low-volume regional stores</text>
+  <text x="480" y="328" font-size="10" fill="#2E2126">• 11 high-confidence calls went wrong</text>
+  <text x="480" y="350" font-size="10" fill="#2E2126">• Weather-driven demand not modelled</text>
+  <text x="480" y="382" font-size="9" fill="#C4462F">Carried into Phase 2 as a known limitation,</text>
+  <text x="480" y="395" font-size="9" fill="#C4462F">not resolved.</text>
+
+  <rect x="46" y="448" width="664" height="82" rx="6" fill="#F1E7DC"/>
+  <text x="66" y="472" font-size="11" font-weight="bold" fill="#5C2233">Decision</text>
+  <text x="66" y="494" font-size="11" fill="#2E2126">Proceed to Phase 2 (shadow mode). Do not build integration or add categories.</text>
+  <text x="66" y="514" font-size="10" fill="#6E5B62">Had the result been below +5%, the recommendation would have been to stop here.</text>
+  <line x1="734" y1="171" x2="744" y2="171" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="175" font-size="10" fill="#C4462F">Phase 1 has no planner</text>
+  <text x="748" y="188" font-size="10" fill="#C4462F">UI — this is an internal</text>
+  <text x="748" y="201" font-size="10" fill="#C4462F">evidence screen, and it</text>
+  <text x="748" y="214" font-size="10" fill="#C4462F">is the go/no-go gate</text>
+  <line x1="734" y1="258" x2="744" y2="258" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="262" font-size="10" fill="#C4462F">Compared against two</text>
+  <text x="748" y="275" font-size="10" fill="#C4462F">baselines, not one. The</text>
+  <text x="748" y="288" font-size="10" fill="#C4462F">analogue method is the</text>
+  <text x="748" y="301" font-size="10" fill="#C4462F">harder bar to clear</text>
+  <line x1="734" y1="336" x2="744" y2="336" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="340" font-size="10" fill="#C4462F">A 'where it failed' panel</text>
+  <text x="748" y="353" font-size="10" fill="#C4462F">is mandatory. A backtest</text>
+  <text x="748" y="366" font-size="10" fill="#C4462F">showing only wins is not</text>
+  <text x="748" y="379" font-size="10" fill="#C4462F">evidence, it is marketing</text>
+  <line x1="734" y1="466" x2="744" y2="466" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="470" font-size="10" fill="#C4462F">The stop condition is</text>
+  <text x="748" y="483" font-size="10" fill="#C4462F">written down before the</text>
+  <text x="748" y="496" font-size="10" fill="#C4462F">result — so the gate</text>
+  <text x="748" y="509" font-size="10" fill="#C4462F">cannot be moved after</text>
+
+</svg>

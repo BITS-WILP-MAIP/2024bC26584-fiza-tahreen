@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 600" width="1010" height="600" font-family='Helvetica, Arial, sans-serif'>
+  <rect width="1010" height="600" fill="#F7F1E8"/>
+  <text x="28" y="34" font-size="15" font-weight="bold" fill="#5C2233">Screen 2 — Item detail, high confidence</text>
+  <text x="28" y="54" font-size="11.5" fill="#6E5B62">The decision screen. Recommendation, why, alternatives, and three equally easy actions.</text>
+  <rect x="28" y="70" width="700" height="500" rx="6" fill="#FFFFFF" stroke="#C9BDB4"/>
+  <line x1="28" y1="112" x2="728" y2="112" stroke="#C9BDB4"/>
+  <text x="46" y="97" font-size="13" font-weight="bold" fill="#2E2126">← Kids' rash vest, 5 colours</text>
+  <text x="600" y="97" font-size="10" fill="#6E5B62">2,400 units · $186k at stake</text>
+
+  <!-- recommendation panel -->
+  <rect x="46" y="130" width="400" height="104" rx="6" fill="#5C2233"/>
+  <text x="66" y="156" font-size="10" fill="#C9A5B2" letter-spacing="1.4">RECOMMENDATION</text>
+  <text x="66" y="186" font-size="24" font-weight="bold" fill="#FFFFFF">Cut 25% — this week</text>
+  <text x="66" y="212" font-size="11" fill="#E8D5DB">Projected 82% sell-through by end of window</text>
+  <text x="66" y="226" font-size="11" fill="#E8D5DB">vs 61% under the current flat schedule</text>
+
+  <!-- confidence panel -->
+  <rect x="462" y="130" width="248" height="104" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="480" y="156" font-size="10" fill="#6E5B62" letter-spacing="1.4">CONFIDENCE</text>
+  <rect x="480" y="165" width="54" height="18" rx="9" fill="#3F7A5E" opacity="0.13"/>
+  <text x="507.0" y="177.5" font-size="9.5" font-weight="bold" fill="#3F7A5E" text-anchor="middle">HIGH</text>
+  <rect x="480" y="196" width="212" height="7" rx="3.5" fill="#C9BDB4"/>
+  <rect x="480" y="196" width="168" height="7" rx="3.5" fill="#3F7A5E"/>
+  <text x="480" y="222" font-size="9.5" fill="#6E5B62">14 analogue lines · 3 prior seasons</text>
+
+  <!-- why panel -->
+  <rect x="46" y="252" width="400" height="150" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="66" y="276" font-size="11" font-weight="bold" fill="#5C2233">Why this recommendation</text>
+  <text x="66" y="299" font-size="10.5" fill="#2E2126">• Sell-through is 18pts behind the same week last season</text>
+  <text x="66" y="319" font-size="10.5" fill="#2E2126">• 9 of 12 clusters are tracking below plan; coastal is not</text>
+  <text x="66" y="339" font-size="10.5" fill="#2E2126">• Analogue lines cleared at 25% with minimal residual</text>
+  <text x="66" y="359" font-size="10.5" fill="#2E2126">• Holding 2 more weeks projects 71% — below the 80% target</text>
+  <text x="66" y="386" font-size="10" fill="#6E5B62">Largest driver: cluster-level sell-through gap</text>
+
+  <!-- options compared -->
+  <rect x="462" y="252" width="248" height="150" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
+  <text x="480" y="276" font-size="11" font-weight="bold" fill="#5C2233">Options compared</text>
+  <text x="480" y="296" font-size="10.5" fill="#2E2126">Hold — no cut</text>
+  <text x="676" y="296" font-size="10.5" fill="#2E2126" text-anchor="end">61%</text>
+  <text x="480" y="318" font-size="10.5" fill="#2E2126">Cut 15% now</text>
+  <text x="676" y="318" font-size="10.5" fill="#2E2126" text-anchor="end">74%</text>
+  <text x="480" y="340" font-size="10.5" fill="#3F7A5E" font-weight='bold'>Cut 25% now</text>
+  <text x="676" y="340" font-size="10.5" fill="#3F7A5E" font-weight='bold' text-anchor="end">82%</text>
+  <text x="480" y="362" font-size="10.5" fill="#2E2126">Cut 35% now</text>
+  <text x="676" y="362" font-size="10.5" fill="#2E2126" text-anchor="end">88%</text>
+  <text x="480" y="388" font-size="9" fill="#6E5B62">Projected sell-through · 35% cut recovers</text>
+  <text x="480" y="400" font-size="9" fill="#6E5B62">less margin despite higher volume</text>
+
+  <!-- action bar -->
+  <line x1="28" y1="424" x2="728" y2="424" stroke="#C9BDB4"/>
+  <rect x="46" y="442" width="132" height="38" rx="5" fill="#3F7A5E"/>
+  <text x="112" y="466" font-size="12.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Approve</text>
+  <rect x="192" y="442" width="132" height="38" rx="5" fill="#FFFFFF" stroke="#5C2233" stroke-width="1.5"/>
+  <text x="258" y="466" font-size="12.5" font-weight="bold" fill="#5C2233" text-anchor="middle">Adjust</text>
+  <rect x="338" y="442" width="132" height="38" rx="5" fill="#FFFFFF" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="404" y="466" font-size="12.5" font-weight="bold" fill="#C4462F" text-anchor="middle">Reject</text>
+  <text x="490" y="466" font-size="10" fill="#6E5B62">Adjust and Reject require a reason</text>
+
+  <!-- reason capture -->
+  <rect x="46" y="498" width="664" height="52" rx="5" fill="#F7F1E8" stroke="#C9BDB4" stroke-dasharray="4 3"/>
+  <text x="66" y="518" font-size="10.5" font-weight="bold" fill="#5C2233">Reason (appears on Adjust / Reject)</text>
+  <text x="66" y="536" font-size="10" fill="#6E5B62">Competitor activity · Range being repeated next season · Store feedback · Stock quality issue · Other</text>
+  <line x1="734" y1="166" x2="744" y2="166" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="170" font-size="10" fill="#C4462F">The recommendation is</text>
+  <text x="748" y="183" font-size="10" fill="#C4462F">stated as one action,</text>
+  <text x="748" y="196" font-size="10" fill="#C4462F">not a probability the</text>
+  <text x="748" y="209" font-size="10" fill="#C4462F">planner has to interpret</text>
+  <line x1="734" y1="281" x2="744" y2="281" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="285" font-size="10" fill="#C4462F">Reasons in the planner's</text>
+  <text x="748" y="298" font-size="10" fill="#C4462F">own vocabulary — cluster</text>
+  <text x="748" y="311" font-size="10" fill="#C4462F">sell-through, analogues —</text>
+  <text x="748" y="324" font-size="10" fill="#C4462F">not feature weights</text>
+  <line x1="734" y1="346" x2="744" y2="346" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="350" font-size="10" fill="#C4462F">Alternatives are visible.</text>
+  <text x="748" y="363" font-size="10" fill="#C4462F">Showing only the pick</text>
+  <text x="748" y="376" font-size="10" fill="#C4462F">makes it an instruction,</text>
+  <text x="748" y="389" font-size="10" fill="#C4462F">not a recommendation</text>
+  <line x1="734" y1="461" x2="744" y2="461" stroke="#C4462F" stroke-width="1.5"/>
+  <text x="748" y="465" font-size="10" fill="#C4462F">Approve is one click.</text>
+  <text x="748" y="478" font-size="10" fill="#C4462F">Overriding is also one</text>
+  <text x="748" y="491" font-size="10" fill="#C4462F">click — it must not be</text>
+  <text x="748" y="504" font-size="10" fill="#C4462F">harder than agreeing</text>
+
+</svg>
