@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" width="900" height="660" font-family="Georgia, 'Times New Roman', serif">
   <rect width="900" height="660" fill="#F7F1E8"/>
-  <text x="60" y="60" font-size="30" font-weight="bold" fill="#5C2233">ClearSight — brand sheet</text>
-  <text x="60" y="84" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#6E5B62">The ring is the planner's view. The three descending bars are the markdown steps — the deepest cut in accent red.</text>
+  <text x="60" y="60" font-size="30" font-weight="bold" fill="#5C2233">ClearSight brand sheet</text>
+  <text x="60" y="84" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#6E5B62">The ring is the planner's view. The three descending bars are the markdown steps, with the deepest cut in accent red.</text>
 
   <text x="60" y="140" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="bold" fill="#C4462F" letter-spacing="2">PRIMARY MARK</text>
   <g transform="translate(60,160)">  <circle cx="60" cy="60" r="52" fill="none" stroke="#5C2233" stroke-width="9"/>

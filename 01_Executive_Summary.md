@@ -1,87 +1,55 @@
-# Executive Summary: ClearSight
-
-*An AI-assisted markdown and exit-stock decision copilot for multi-store seasonal retailers.*
-
----
+# Executive summary
 
 ## Problem
 
-Every season, merchandise planners at multi-store retailers decide how deeply to discount leftover seasonal stock, and when. The decision is made in spreadsheets, at national level, using last season's analogues and experience.
+Merchandise planners at multi-store seasonal retailers decide how deeply to discount leftover stock, and when. The decision is made in spreadsheets, at national level, using last season's analogues and experience, and it fails in both directions. Cut too early and margin is given away on stock that would have sold closer to full price. Cut too late and stock clears at or below cost after occupying space that next season's intake needs.
 
-It goes wrong in both directions. Discount too early and margin is given away on stock that would have sold closer to full price. Discount too late and stock clears at or below cost, having consumed store and warehouse space that next season's intake needs.
+It is made nationally because evaluating thousands of items across hundreds of stores by hand is not feasible, so one schedule is applied to stores with very different demand and it is wrong, in one direction or the other, for most of them. Markdown is one of the largest controllable margin levers in seasonal retail, and the decision repeats for every seasonal item, every season. That repetition is what makes it a product rather than a one-off analysis.
 
-The decision is made nationally because evaluating thousands of items across hundreds of stores by hand is not feasible. So a single discount schedule is applied to stores with very different demand, and it is wrong, in one direction or the other, for most of them.
+## Target user and customer
 
-Markdown is one of the largest controllable margin levers in seasonal retail, and this decision repeats for every seasonal item, every season.
+The user is the seasonal merchandise planner, who owns several categories and thousands of seasonal items and answers to a trading manager for every markdown taken. The customer is a retailer with 100 or more stores and defined seasonal ranges: discount department stores, apparel and footwear chains, homewares. The first segment is large-format discount retail, where seasonal volume is high and private-label ranges change substantially year to year.
 
----
+## Product concept
 
-## Target User and Customer
+ClearSight forecasts how much of an item will still sell in each store cluster at different discount depths and timings, then recommends one option with a stated confidence level. The planner sees a ranked list of at-risk items, the projected outcome of each option, and a recommendation, and she approves, adjusts or rejects with every override captured against a reason. Below a confidence threshold ClearSight shows no recommendation at all, routes the item to manual decision, and states why confidence is low. It does not change prices and does not act: it recommends, and a person decides.
 
-**User:** the seasonal merchandise planner, who owns several categories and thousands of seasonal items across the store network, and answers to a trading manager for every markdown taken.
-
-**Customer:** retailers with 100+ stores and defined seasonal ranges: discount department stores, apparel and footwear chains, homewares. The first customer segment is large-format discount retail, where seasonal volume is high and private-label ranges change substantially year to year.
-
----
-
-## Product Concept
-
-ClearSight forecasts how much of an item will still sell in each group of stores at different discount depths and timings, then recommends one option with a stated confidence level.
-
-The planner sees a ranked list of at-risk items, the projected outcome of each discount option, and a recommendation. They approve, adjust, or reject, and rejections are captured with a reason. Where confidence is low, ClearSight shows no recommendation at all and routes the item to manual decision, stating why.
-
-It does not change prices. It does not act. It recommends, and a person decides.
-
-**Core product** (identical across customers): forecasting, recommendation and ranking, confidence routing, planner review interface, override capture, backtesting.
-**Customisation** (per retailer): category structure, store clustering rules, system integration, markdown approval rules.
-
----
+Forecasting, ranking, confidence routing, the review interface, override capture and the backtest harness are identical for every customer. Category structure, store clustering rules, integration and approval rules are configuration rather than code, and that split is what makes ClearSight a product rather than a project for one retailer.
 
 ## Why AI
 
 | Alternative | Why it is not enough |
 |---|---|
-| Flat markdown schedule (current practice) | Assumes stores behave alike. Weather, demographics and local competition make the same item a winner in one cluster and dead stock in another |
-| Rules based on sell-through thresholds | Rules need history to calibrate. Seasonal private-label ranges are substantially new each year, so there is no item-level history to write the rule from |
-| Dashboards and BI | Show what happened. Cannot estimate what *will* happen under a 20% cut now versus a 35% cut in three weeks, and that counterfactual is the decision |
+| Flat markdown schedule, current practice | Assumes stores behave alike. Weather, demographics and local competition make the same item a winner in one cluster and dead stock in another |
+| Sell-through threshold rules | Rules need history to calibrate. Seasonal private-label ranges are substantially new each year, so there is no item-level history to write the rule from |
+| Dashboards and business intelligence | Show what happened. They cannot estimate what happens under a 20% cut now versus a 35% cut in three weeks, and that counterfactual is the decision |
 | More analysts | The volume is the problem. Adding people does not scale and does not make the decision consistent |
 
-The AI task is to predict residual sell-through per store cluster at candidate price points, generalising from product attributes and comparable lines where direct history does not exist. That generalisation is what rules and dashboards cannot do.
+*Table 1. Alternatives to an AI approach, and why each is insufficient.*
 
----
+The AI task is narrow: predict residual sell-through per store cluster at candidate price points, generalising from product attributes where direct history does not exist. That generalisation is the one thing rules and dashboards cannot do.
 
-## Value and Cost Logic
+## Value and cost logic
 
-Value is margin recovered on exit stock, measured against the retailer's own current markdown rule. It is directly measurable, which makes outcome-anchored pricing possible.
+Value is margin recovered on exit stock, measured against the retailer's own current rule, which is directly measurable and therefore makes outcome-anchored pricing possible. On the stated assumption chain a 9.4% uplift is worth roughly $1.35 million a year to a 312-store banner, priced at $300,000, so the retailer keeps about 78% of the value created.
 
-Proposed model: an annual platform fee per retail banner, plus a per-category fee, sized as a clear fraction of conservatively estimated margin recovered. Deliberately **not** per-recommendation pricing: inference cost per item scored is small and variable, but usage-based billing would create cost anxiety and discourage exactly the careful review behaviour the product depends on.
+Pricing is deliberately not per recommendation. Working the unit economics shows inference at under 0.5% of cost to serve, with onboarding, monitoring and support accounting for the rest. There is no marginal cost worth metering, and metering would suppress the careful review the product depends on.
 
-Cost shape: inference and data pipeline vary with catalogue size; store clustering setup, integration and planner onboarding are fixed per customer. The core-versus-customisation split is what allows fixed development cost to be spread across customers rather than carried by the first one.
+## Main risks
 
----
-
-## Main Risks
-
-1. **A confidently wrong recommendation acted on at scale.** This is the failure mode that ends the product. Not a slightly inaccurate forecast, but a high-confidence recommendation the planner trusted and should not have.
-2. **Planners rubber-stamping.** If recommendations are accepted without review, the human-in-the-loop control is nominal and the risk above becomes unmanaged.
-3. **Feedback loops.** After the first season, the model observes outcomes of prices it influenced. Naive retraining bakes in its own past errors.
-
-Controls: confidence thresholds with mandatory manual routing below them, no automatic price execution, reason capture on every override, acceptance rate monitored as a health signal rather than maximised, and holdout categories retained to detect drift.
-
----
+- **A confidently wrong recommendation acted on at scale.** The failure mode that ends the product. Controlled by confidence thresholds with mandatory manual routing below them, no automatic price execution, a second approver above a value threshold, and a post-mortem on every high-confidence failure.
+- **Cluster bias.** Catchment demographics is a clustering input, so the model can price by neighbourhood income without anyone deciding to. Controlled by disparity testing on income decile as a standing metric from Phase 1, a switchable demographic input with its cost made visible, and a report that goes to the retailer's governance forum.
+- **Planners rubber-stamping**, which makes human-in-the-loop nominal. Controlled by an acceptance-rate ceiling of 85% rather than a target, by overriding costing no more clicks than agreeing, and by omitting bulk approve from the MVP.
+- **Feedback loops**, since the model observes outcomes of prices it influenced. Controlled by permanent holdout categories on the flat rule and by re-benchmarking against the original baseline rather than the model's own previous version.
 
 ## Recommendation
 
-**Prototype, then pilot, with a hard gate in between.**
+Prototype, then pilot, with a hard gate in between.
 
-**Phase 1 (now):** backtest the recommendation against historical seasons. Does it beat the current flat markdown rule on margin recovered? No interface required. *If it does not beat the baseline, stop here.* That outcome is a finding, not a failure, and it costs very little to discover.
+Phase 1 is a backtest against historical seasons, asking whether the recommendation beats both the current flat rule and last-season analogue matching on margin recovered. No interface is required, and if it does not beat both by 5% the project stops there, which is a finding rather than a failure because it costs weeks to discover. Phase 2 is a planner-facing MVP in shadow mode covering one category, one exit window and one market, with decisions not applied, testing whether the workflow and the trust model hold. Phase 3 is a controlled live pilot with a matched control group of categories.
 
-**Phase 2:** planner-facing MVP in shadow mode, one category, one exit window, one market. Planners use it alongside their normal process; decisions are not applied. This tests whether the workflow and the trust model hold, which is the real adoption risk.
-
-**Phase 3:** controlled live pilot with a matched control group of categories.
-
-Do not fund integration, additional categories, or a second customer until Phase 2 shows planners engaging with recommendations and giving substantive reasons when they override.
+Integration, additional categories and a second customer should not be funded until Phase 2 shows planners engaging with recommendations and giving substantive reasons when they override. The reason not to pilot immediately is that a markdown, once taken, cannot be untaken, and the most important unknown is also the cheapest to test.
 
 ---
 
-*MBA ZG583, Management of AI Products | Capstone | Prototype and evaluation use synthetic or public retail data only.*
+*Full analysis in the Capstone Project Report. All figures synthetic or illustrative; no confidential employer data.*
