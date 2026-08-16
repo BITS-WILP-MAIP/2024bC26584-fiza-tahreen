@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ClearSight — Prototype</title>
+<title>ClearSight prototype</title>
 <style>
   :root{
     --bg:#F7F1E8; --card:#FFFFFF; --line:#C9BDB4; --line-soft:#E7DDD1;
@@ -296,7 +296,7 @@ const ITEMS = [
           "Holding 2 more weeks projects 71%, below the 80% target" ],
     driver:"cluster-level sell-through gap",
     clusters: cl([[78,72],[58,66],[54,64],[49,63],[52,62]]),
-    options:[ {label:"Hold — no cut",depth:"hold",pct:61},{label:"Cut 15% now",depth:"15%",pct:74},
+    options:[ {label:"Hold, no cut",depth:"hold",pct:61},{label:"Cut 15% now",depth:"15%",pct:74},
               {label:"Cut 25% now",depth:"25%",pct:82,rec:true},{label:"Cut 35% now",depth:"35%",pct:88} ],
     optNote:"35% cut recovers less margin despite higher volume" },
 
@@ -323,13 +323,13 @@ const ITEMS = [
     driver:"conflicting cluster signals",
     mediumNote:"Confidence is medium: clusters disagree. Review the breakdown before acting.",
     clusters: cl([[55,64],[71,66],[68,63],[57,61],[52,62]]),
-    options:[ {label:"Hold — no cut",depth:"hold",pct:64},{label:"Cut 15% now",depth:"15%",pct:73,rec:true},
+    options:[ {label:"Hold, no cut",depth:"hold",pct:64},{label:"Cut 15% now",depth:"15%",pct:73,rec:true},
               {label:"Cut 25% now",depth:"25%",pct:80},{label:"Cut 35% now",depth:"35%",pct:85} ],
     optNote:"Revisit in 1 week; a second read may raise or lower confidence" },
 
   { id:"cooler", name:"Cooler bag 24L", units:1100, stores:120, stake:"$97k", stakeNum:97000,
     conf:"none", rec:"No recommendation",
-    lowWhy:[ "New line — no prior-season history for this item",
+    lowWhy:[ "New line, no prior-season history for this item",
              "Only 2 analogue lines matched, both weakly",
              "Cluster demand signals conflict: 3 up, 2 down" ],
     improve:"Confidence would improve with 3+ more weeks of in-season sales, or a stronger attribute match.",
@@ -339,14 +339,14 @@ const ITEMS = [
   { id:"goggles", name:"Swim goggles junior", units:3200, stores:250, stake:"$76k", stakeNum:76000,
     conf:"high", rec:"Cut 20% in 1 week", action:"Cut 20%", when:"in 1 week", projected:84, vsFlat:69,
     evidence:"17 analogue lines · 3 prior seasons",
-    why:[ "High volume, low unit margin — timing matters more than depth",
+    why:[ "High volume and low unit margin, so timing matters more than depth",
           "All clusters tracking slightly below plan",
           "Analogues cleared cleanly at 20% one week out",
           "A 30% cut adds volume but gives away margin unnecessarily" ],
     driver:"volume clearance timing",
     clusters: cl([[64,68],[61,66],[59,65],[57,64],[60,64]]),
     options:[ {label:"Cut 20% now",depth:"20% now",pct:81},{label:"Cut 20% in 1 wk",depth:"20% 1wk",pct:84,rec:true},
-              {label:"Cut 30% now",depth:"30% now",pct:88},{label:"Hold — no cut",depth:"hold",pct:69} ],
+              {label:"Cut 30% now",depth:"30% now",pct:88},{label:"Hold, no cut",depth:"hold",pct:69} ],
     optNote:"30% clears faster but recovers less margin per unit" },
 
   { id:"sunhat", name:"Sun hat, kids", units:2100, stores:205, stake:"$64k", stakeNum:64000,
@@ -358,7 +358,7 @@ const ITEMS = [
           "Analogues cleared at 20% with minimal residual" ],
     driver:"cluster-level sell-through gap",
     clusters: cl([[71,70],[55,65],[52,64],[50,62],[54,63]]),
-    options:[ {label:"Hold — no cut",depth:"hold",pct:63},{label:"Cut 15% now",depth:"15%",pct:72},
+    options:[ {label:"Hold, no cut",depth:"hold",pct:63},{label:"Cut 15% now",depth:"15%",pct:72},
               {label:"Cut 20% now",depth:"20%",pct:80,rec:true},{label:"Cut 30% now",depth:"30%",pct:85} ],
     optNote:"20% clears the target without over-discounting Coastal" },
 
@@ -373,7 +373,7 @@ const ITEMS = [
     mediumNote:"Confidence is medium: recent sales are sparse. A one-week hold sharpens the read.",
     clusters: cl([[59,64],[70,66],[63,62],[52,61],[60,62]]),
     options:[ {label:"Cut 25% now",depth:"25% now",pct:70},{label:"Hold 1 wk, 25%",depth:"hold 1wk",pct:75,rec:true},
-              {label:"Hold 2 wks, 25%",depth:"hold 2wk",pct:74},{label:"Hold — no cut",depth:"hold",pct:66} ],
+              {label:"Hold 2 wks, 25%",depth:"hold 2wk",pct:74},{label:"Hold, no cut",depth:"hold",pct:66} ],
     optNote:"Holding past one week gains little and risks the intake window" },
 
   { id:"cushion", name:"Garden lounger cushion", units:640, stores:110, stake:"$47k", stakeNum:47000,
@@ -403,7 +403,7 @@ function renderWorklist(){
     const st = statusOf(it.id);
     const conf = it.conf;
     const pill = conf==="none"
-      ? `<span class="pill none"><span class="dot"></span>Low — manual</span>`
+      ? `<span class="pill none"><span class="dot"></span>Low, manual</span>`
       : `<span class="pill ${conf}"><span class="dot"></span>${conf==="high"?"High":"Medium"}</span>`;
     const recCell = conf==="none" ? `<span class="rec-none">No recommendation</span>` : `<span class="rec-text">${it.rec}</span>`;
     const statusCell = st ? `<span class="status ${st}">${st}</span>` : pill;
@@ -491,7 +491,7 @@ function renderRecommendation(it){
       <div>
         <div class="card rec-hero">
           <div class="eyebrow">Recommendation</div>
-          <div class="rec-action">${it.action} <span style="color:var(--muted);font-weight:400;font-size:20px">— ${it.when}</span></div>
+          <div class="rec-action">${it.action}<span style="color:var(--muted);font-weight:400;font-size:20px">, ${it.when}</span></div>
           <div class="rec-proj">Projected <b>${it.projected}% sell-through</b> by end of window <span class="flat">vs ${it.vsFlat}% under the current flat schedule</span></div>
           <div class="conf-row">${confPill}<span class="conf-evidence">${it.evidence}</span></div>
           ${mediumBanner}
@@ -515,7 +515,7 @@ function renderRecommendation(it){
           <h3>Why this recommendation</h3>
           <ul class="why-list">${it.why.map(w=>`<li>${w}</li>`).join("")}</ul>
           <div class="driver">Largest driver: <b>${it.driver}</b></div>
-          <p class="note">Reasons are in the planner's own vocabulary — cluster sell-through, analogue lines — not model internals or feature weights.</p>
+          <p class="note">Reasons are in the planner's own vocabulary: cluster sell-through and analogue lines, not model internals or feature weights.</p>
         </div>
         ${clusterBlock(it)}
       </div>
@@ -580,7 +580,7 @@ function recordDecision(it, status, action, reason){
 
 function approve(it){
   recordDecision(it,"approved",it.action,null);
-  toast(`Approved — ${it.action}`, "Approved");
+  toast(`Approved, ${it.action}`, "Approved");
   renderWorklist();
 }
 function toast(msg, kw){
@@ -626,8 +626,8 @@ function openReject(it){
   wireReasons();
   modalSave.onclick=()=>{
     const r=selectedReason(); const note=$("#reasonText").value.trim();
-    recordDecision(it,"rejected","Rejected", note?`${r} — ${note}`:r);
-    closeModal(); toast(`Rejected — reason: ${r}`,"Rejected"); renderWorklist();
+    recordDecision(it,"rejected","Rejected", note?`${r}, ${note}`:r);
+    closeModal(); toast(`Rejected, reason: ${r}`,"Rejected"); renderWorklist();
   };
   scrim.classList.add("open");
 }
@@ -635,7 +635,7 @@ function openReject(it){
 function openAdjust(it){
   modalTitle.textContent="Adjust this recommendation";
   modalSub.textContent=`ClearSight recommended: ${it.rec}`;
-  const depthOpts = ["Hold — no cut","10%","15%","20%","25%","30%","35%"];
+  const depthOpts = ["Hold, no cut","10%","15%","20%","25%","30%","35%"];
   const timingOpts = ["now","in 1 week","in 2 weeks","in 3 weeks"];
   modalBody.innerHTML = `
     <div class="field"><label>Depth</label>
@@ -649,7 +649,7 @@ function openAdjust(it){
 
   // project sell-through from selected depth using the item's options where available
   function projFor(depthLabel){
-    const map = {"Hold — no cut":it.vsFlat};
+    const map = {"Hold, no cut":it.vsFlat};
     it.options.forEach(o=>{ const m=o.label.match(/(\d+)%/); if(m) map[m[1]+"%"]=o.pct; });
     if(depthLabel in map) return map[depthLabel];
     // interpolate roughly for depths not explicitly modelled
@@ -675,9 +675,9 @@ function openAdjust(it){
   modalSave.onclick=()=>{
     const r=selectedReason(); const note=$("#reasonText").value.trim();
     const d=$("#adjDepth").value, t=$("#adjTime").value;
-    const label = d==="Hold — no cut" ? "Hold — no cut" : `${d} ${t}`;
-    recordDecision(it,"adjusted",label, note?`${r} — ${note}`:r);
-    closeModal(); toast(`Adjusted to ${label} — reason: ${r}`,"Adjusted"); renderWorklist();
+    const label = d==="Hold, no cut" ? "Hold, no cut" : `${d} ${t}`;
+    recordDecision(it,"adjusted",label, note?`${r}, ${note}`:r);
+    closeModal(); toast(`Adjusted to ${label}, reason: ${r}`,"Adjusted"); renderWorklist();
   };
   scrim.classList.add("open");
 }
@@ -685,18 +685,18 @@ function openAdjust(it){
 function openManual(it){
   modalTitle.textContent="Record a manual decision";
   modalSub.textContent="ClearSight made no recommendation for this item.";
-  const depthOpts = ["Hold — no cut","10%","15%","20%","25%","30%","35%"];
+  const depthOpts = ["Hold, no cut","10%","15%","20%","25%","30%","35%"];
   const timingOpts = ["now","in 1 week","in 2 weeks","in 3 weeks"];
   modalBody.innerHTML = `
-    <div class="field"><label>Your decision — depth</label><select id="mDepth">${depthOpts.map(d=>`<option>${d}</option>`).join("")}</select></div>
+    <div class="field"><label>Your decision: depth</label><select id="mDepth">${depthOpts.map(d=>`<option>${d}</option>`).join("")}</select></div>
     <div class="field"><label>Timing</label><select id="mTime">${timingOpts.map(t=>`<option>${t}</option>`).join("")}</select></div>
     <div class="field"><label>Note (optional)</label><textarea id="mNote" placeholder="Why you made this call…"></textarea></div>`;
   modalSave.textContent="Save decision"; modalSave.disabled=false;
   modalSave.onclick=()=>{
     const d=$("#mDepth").value, t=$("#mTime").value, note=$("#mNote").value.trim();
-    const label = d==="Hold — no cut" ? "Hold — no cut (manual)" : `${d} ${t} (manual)`;
-    recordDecision(it,"manual",label, note||"Manual decision — no signal");
-    closeModal(); toast(`Manual decision saved — ${label}`,"Logged"); renderWorklist();
+    const label = d==="Hold, no cut" ? "Hold, no cut (manual)" : `${d} ${t} (manual)`;
+    recordDecision(it,"manual",label, note||"Manual decision, no model signal");
+    closeModal(); toast(`Manual decision saved, ${label}`,"Logged"); renderWorklist();
   };
   scrim.classList.add("open");
 }

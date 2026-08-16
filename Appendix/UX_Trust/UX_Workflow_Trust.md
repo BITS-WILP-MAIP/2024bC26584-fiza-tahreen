@@ -2,6 +2,8 @@
 
 *How the product behaves when it is confident, when it is not, and when it is wrong.*
 
+> An interactive walkthrough of screens 1–4 is in `ClearSight_Prototype.html`. **All figures synthetic or illustrative.**
+
 ---
 
 ## Design principle
@@ -47,7 +49,7 @@ The planner enters at the worklist, works down it, and leaves. Most of the value
 | 6 | Backtest evidence (Phase 1) | The go/no-go gate, internal, no planner interface | `06_backtest_gate.svg` |
 | 7 | Store cluster configuration | The customisation layer, what changes per retailer | `07_store_cluster_config.svg` |
 
-All files are in `wireframes/`. Annotations in the margin of each screen record the reasoning behind specific choices.
+All files are in `Appendix/Wireframes/`. Annotations in the margin of each screen record the reasoning behind specific choices.
 
 **Screens 1–4 are the MVP.** Screen 6 exists before any interface is built, it is the evidence that decides whether screens 1–4 are worth building at all.
 

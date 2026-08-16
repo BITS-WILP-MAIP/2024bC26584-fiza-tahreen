@@ -2,6 +2,10 @@
 
 *An AI-assisted markdown and exit-stock decision copilot for multi-store seasonal retailers.*
 
+> Companion documents: strategy and opportunity framing in `Product_Strategy.md`; data, model and evaluation in `../Metrics/Data_Model_Evaluation.md`; economics in `../Economics/Business_Economics_Scaling.md`; ethics and risk in `../Risk_Note/Ethics_Governance_Risk.md`. All are integrated in `02_Final_Report.md`.
+
+> **All figures synthetic or illustrative.** No confidential employer data.
+
 ---
 
 ## 1. Problem Statement
@@ -23,7 +27,7 @@ The decision is made nationally because analysing thousands of SKUs across hundr
 
 ## 2. Persona
 
-**Priya, Seasonal Merchandise Planner.** Owns 3–4 categories, roughly 2,000 seasonal SKUs a year across 300+ stores. Runs exit planning in Excel exported from the merchandise system. Has been burned in both directions: a range marked down 30% in week 8 that was selling out in coastal stores anyway, and a bulky outdoor line held too long that ate DC space into the next season's intake.
+**Priya, Seasonal Merchandise Planner.** Owns 3–4 categories, roughly 2,000 seasonal SKUs a year across 312 stores. Runs exit planning in Excel exported from the merchandise system. Has been burned in both directions: a range marked down 30% in week 8 that was selling out in coastal stores anyway, and a bulky outdoor line held too long that ate DC space into the next season's intake.
 
 What she needs from a tool: a defensible reason for each decision (she answers to a trading manager), speed (exit reviews compete with next season's buy for her time), and the ability to say no to it. What would make her abandon it: one confidently wrong recommendation she followed and had to explain upward.
 
@@ -160,7 +164,7 @@ Each phase gate is a real stop point. A backtest that cannot beat a flat schedul
 - High-confidence recommendations that produced bad outcomes (the metric that ends the project if it is not rare)
 - Planner-reported confidence, surveyed each cycle
 
-**Launch threshold.** ClearSight moves past pilot only if it beats the flat-schedule baseline on backtest margin recovery, and the expected loss from acting on high-confidence wrong recommendations is demonstrably smaller than the expected gain from the rest.
+**Launch threshold.** ClearSight moves past pilot only if it beats both baselines, the flat-schedule rule and last-season analogue matching, by at least +5% on backtest margin recovery, with the confidence signal calibrated, and the expected loss from acting on high-confidence wrong recommendations demonstrably smaller than the expected gain from the rest. Full thresholds per phase: `Appendix/Metrics/Data_Model_Evaluation.md` §7.
 
 ---
 

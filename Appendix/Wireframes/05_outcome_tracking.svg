@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1010 596" width="1010" height="596" font-family='Helvetica, Arial, sans-serif'>
   <rect width="1010" height="596" fill="#F7F1E8"/>
-  <text x="28" y="34" font-size="15" font-weight="bold" fill="#5C2233">Screen 5 — Outcome tracking (Phase 3)</text>
-  <text x="28" y="54" font-size="11.5" fill="#6E5B62">Whether it is working. Shown once decisions are live — in Phase 2 shadow mode, only the engagement metrics apply.</text>
+  <text x="28" y="34" font-size="15" font-weight="bold" fill="#5C2233">Screen 5. Outcome tracking (Phase 3)</text>
+  <text x="28" y="54" font-size="11.5" fill="#6E5B62">Whether it is working. Shown once decisions are live. In Phase 2 shadow mode only the engagement metrics apply.</text>
   <rect x="28" y="70" width="700" height="496" rx="6" fill="#FFFFFF" stroke="#C9BDB4"/>
   <line x1="28" y1="112" x2="728" y2="112" stroke="#C9BDB4"/>
-  <text x="46" y="97" font-size="13" font-weight="bold" fill="#2E2126">Season performance — Summer Outdoor</text>
+  <text x="46" y="97" font-size="13" font-weight="bold" fill="#2E2126">Season performance: Summer Outdoor</text>
   <text x="560" y="97" font-size="10" fill="#6E5B62">Phase 3 pilot · Wk 6 · vs matched control</text>
 
   <!-- headline metrics -->
   <rect x="46" y="130" width="206" height="86" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
   <text x="64" y="152" font-size="9.5" fill="#6E5B62" letter-spacing="1.2">MARGIN RECOVERED</text>
-  <text x="64" y="184" font-size="26" font-weight="bold" fill="#3F7A5E">+$312k</text>
-  <text x="64" y="202" font-size="9.5" fill="#6E5B62">vs flat rule baseline</text>
+  <text x="64" y="184" font-size="26" font-weight="bold" fill="#3F7A5E">+$68k</text>
+  <text x="64" y="202" font-size="9.5" fill="#6E5B62">vs matched control (+9.4%)</text>
   <rect x="268" y="130" width="206" height="86" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
   <text x="286" y="152" font-size="9.5" fill="#6E5B62" letter-spacing="1.2">ACCEPTANCE RATE</text>
   <text x="286" y="184" font-size="26" font-weight="bold" fill="#3F7A5E">68%</text>
@@ -23,7 +23,7 @@
   <rect x="46" y="234" width="400" height="192" rx="6" fill="#F7F1E8" stroke="#C9BDB4"/>
   <text x="66" y="258" font-size="11" font-weight="bold" fill="#5C2233">Acceptance rate over time</text>
   <line x1="66" y1="290" x2="426" y2="290" stroke="#C4462F" stroke-width="1.2" stroke-dasharray="4 3"/>
-  <text x="330" y="286" font-size="8.5" fill="#C4462F">CEILING 85% — review has stopped</text>
+  <text x="330" y="286" font-size="8.5" fill="#C4462F">CEILING 85%, review has stopped</text>
   <line x1="66" y1="384" x2="426" y2="384" stroke="#C9BDB4"/>
   <polyline points="70,368 118,356 166,344 214,338 262,330 310,326 358,322 406,320"
             fill="none" stroke="#3F7A5E" stroke-width="2.5"/>
@@ -56,13 +56,13 @@
   <text x="480" y="386" font-size="9.5" fill="#2E2126">Other</text>
   <rect x="480" y="391" width="41.4" height="7" rx="3.5" fill="#6E5B62"/>
   <text x="694" y="386" font-size="9.5" fill="#6E5B62" text-anchor="end">9%</text>
-  <text x="480" y="415" font-size="8.5" fill="#C4462F">Competitor activity rising — missing feature?</text>
+  <text x="480" y="415" font-size="8.5" fill="#C4462F">Competitor activity rising, missing feature?</text>
 
   <!-- holdout -->
   <rect x="46" y="442" width="664" height="98" rx="6" fill="#F1E7DC" stroke="#C9BDB4"/>
   <text x="66" y="466" font-size="11" font-weight="bold" fill="#5C2233">Holdout categories (no ClearSight recommendations)</text>
-  <text x="66" y="490" font-size="10.5" fill="#2E2126">Beach &amp; Water · Outdoor Furniture — run on the flat rule for the full season</text>
-  <text x="66" y="510" font-size="10" fill="#6E5B62">Margin per unit: holdout $4.12 · ClearSight categories $5.87</text>
+  <text x="66" y="490" font-size="10.5" fill="#2E2126">Beach &amp; Water · Outdoor Furniture: run on the flat rule for the full season</text>
+  <text x="66" y="510" font-size="10" fill="#6E5B62">Not compared per unit: category mixes differ. Margin is measured within category, vs control.</text>
   <text x="66" y="528" font-size="10" fill="#6E5B62">Purpose: detect drift and feedback-loop effects once the model influences the prices it later learns from</text>
   <line x1="734" y1="171" x2="744" y2="171" stroke="#C4462F" stroke-width="1.5"/>
   <text x="748" y="175" font-size="10" fill="#C4462F">Three metric layers on one</text>
@@ -77,7 +77,7 @@
   <line x1="734" y1="356" x2="744" y2="356" stroke="#C4462F" stroke-width="1.5"/>
   <text x="748" y="360" font-size="10" fill="#C4462F">Override reasons in</text>
   <text x="748" y="373" font-size="10" fill="#C4462F">aggregate surface missing</text>
-  <text x="748" y="386" font-size="10" fill="#C4462F">features — this is product</text>
+  <text x="748" y="386" font-size="10" fill="#C4462F">features, this is product</text>
   <text x="748" y="399" font-size="10" fill="#C4462F">feedback, not noise</text>
   <line x1="734" y1="466" x2="744" y2="466" stroke="#C4462F" stroke-width="1.5"/>
   <text x="748" y="470" font-size="10" fill="#C4462F">Holdout categories are</text>
